@@ -1,160 +1,77 @@
+name=index.html url=https://github.com/guifeng-gao/gaolab/blob/main/index.html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智能计算与系统研究组 - Research Group</title>
+    <title>智能计算与系统研究组</title>
     <style>
-        /* ===== 全局重置与变量 ===== */
         :root {
             --primary: #1a3a5c;
-            --primary-light: #2c5f8a;
             --accent: #e8913a;
-            --accent-hover: #d07a28;
-            --bg-light: #f5f7fa;
-            --bg-white: #ffffff;
-            --text-dark: #2c3e50;
-            --text-gray: #6c7a89;
-            --text-light: #95a5a6;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c7a89;
+            --bg-light: #f8fafc;
             --border: #e0e6ed;
-            --shadow: 0 2px 15px rgba(0,0,0,0.08);
-            --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
-            --radius: 10px;
-            --transition: all 0.3s ease;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 24px rgba(0,0,0,0.12);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
-            color: var(--text-dark);
+            color: var(--text-primary);
             background: var(--bg-light);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
-        a {
-            color: var(--primary-light);
-            text-decoration: none;
-            transition: var(--transition);
-        }
+        a { color: var(--primary); text-decoration: none; transition: all 0.3s; }
+        a:hover { color: var(--accent); }
 
-        a:hover {
-            color: var(--accent);
-        }
-
-        /* ===== 导航栏 ===== */
+        /* Navigation */
         .navbar {
-            background: var(--primary);
-            color: white;
             position: fixed;
             top: 0;
             width: 100%;
+            background: white;
+            border-bottom: 1px solid var(--border);
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+            box-shadow: var(--shadow-sm);
         }
 
-        .navbar .container {
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            height: 70px;
         }
 
-        .navbar .logo {
-            font-size: 1.3rem;
+        .logo {
+            font-size: 1.2rem;
             font-weight: 700;
-            color: white;
-            padding: 1rem 0;
-            letter-spacing: 0.5px;
+            color: var(--primary);
         }
 
-        .navbar .logo span {
-            color: var(--accent);
-        }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-size: 0.95rem; color: var(--text-secondary); }
+        .nav-links a:hover { color: var(--accent); }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 0.5rem;
-        }
-
-        .nav-links a {
-            color: rgba(255,255,255,0.85);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: white;
-            background: rgba(255,255,255,0.15);
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        /* ===== 主横幅 ===== */
+        /* Hero */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #3a7cc0 100%);
+            margin-top: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, #3a7cc0 100%);
             color: white;
-            padding: 8rem 2rem 4rem;
+            padding: 6rem 2rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-            font-weight: 800;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .hero .subtitle {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            margin-bottom: 1rem;
-            font-weight: 300;
-        }
-
-        .hero .affiliation {
-            font-size: 1rem;
-            opacity: 0.75;
-            margin-bottom: 2rem;
-        }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 800; }
+        .hero .subtitle { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; }
 
         .hero-buttons {
             display: flex;
@@ -164,45 +81,37 @@
         }
 
         .btn {
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
             font-weight: 600;
             font-size: 0.95rem;
             cursor: pointer;
-            transition: var(--transition);
-            border: 2px solid transparent;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+            transition: all 0.3s;
+            border: none;
         }
 
         .btn-primary {
             background: var(--accent);
             color: white;
-            border-color: var(--accent);
         }
 
         .btn-primary:hover {
-            background: var(--accent-hover);
-            color: white;
+            background: #d07a28;
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(232,145,58,0.4);
+            box-shadow: 0 8px 16px rgba(232, 145, 58, 0.3);
         }
 
         .btn-outline {
             background: transparent;
             color: white;
-            border-color: rgba(255,255,255,0.5);
+            border: 2px solid white;
         }
 
         .btn-outline:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: white;
-            color: white;
-            transform: translateY(-2px);
+            background: rgba(255,255,255,0.1);
         }
 
-        /* ===== 通用区块 ===== */
+        /* Sections */
         .section {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -211,9 +120,9 @@
 
         .section-title {
             font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
             font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
             position: relative;
             display: inline-block;
         }
@@ -223,630 +132,147 @@
             position: absolute;
             bottom: -8px;
             left: 0;
-            width: 50px;
+            width: 40px;
             height: 3px;
             background: var(--accent);
             border-radius: 2px;
         }
 
         .section-desc {
-            color: var(--text-gray);
+            color: var(--text-secondary);
+            margin-top: 2rem;
             margin-bottom: 3rem;
-            margin-top: 1.2rem;
             font-size: 1.05rem;
         }
 
-        .section-bg {
-            background: var(--bg-white);
-        }
+        /* Grid System */
+        .grid { display: grid; gap: 1.5rem; }
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
 
-        .section-bg .section-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-        }
-
-        /* ===== 研究方向 ===== */
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .research-card {
-            background: var(--bg-white);
-            border-radius: var(--radius);
+        /* Card */
+        .card {
+            background: white;
+            border-radius: 8px;
             padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
             border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
         }
 
-        .research-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--accent);
-            transform: scaleY(0);
-            transition: var(--transition);
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .research-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
+        .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .card h3 { color: var(--primary); margin-bottom: 1rem; }
+        .card p { color: var(--text-secondary); }
 
-        .research-card:hover::before {
-            transform: scaleY(1);
-        }
-
-        .research-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .research-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-        }
-
-        .research-card p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* ===== PI 介绍 ===== */
-        .pi-section {
-            display: flex;
-            gap: 3rem;
-            align-items: flex-start;
-            flex-wrap: wrap;
-        }
-
-        .pi-photo {
-            width: 220px;
-            height: 280px;
-            border-radius: var(--radius);
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4rem;
-            flex-shrink: 0;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pi-photo-placeholder {
-            text-align: center;
-        }
-
-        .pi-photo-placeholder .camera-icon {
-            font-size: 3rem;
-            opacity: 0.8;
-        }
-
-        .pi-photo-placeholder .photo-text {
-            font-size: 0.85rem;
-            opacity: 0.7;
-            margin-top: 0.5rem;
-        }
-
-        .pi-info {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .pi-info h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 0.3rem;
-        }
-
-        .pi-info .pi-title {
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-        }
-
-        .pi-info .pi-bio {
-            color: var(--text-gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .pi-contact {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .pi-contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            background: var(--bg-light);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-        }
-
-        /* ===== 团队成员 ===== */
-        .team-category {
-            margin-bottom: 2.5rem;
-        }
-
-        .team-category h3 {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 1.2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
+        /* Team */
         .member-card {
-            background: var(--bg-white);
-            border-radius: var(--radius);
-            padding: 1.5rem;
             text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--border);
+            padding: 1.5rem;
         }
 
-        .member-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .member-avatar {
-            width: 80px;
-            height: 80px;
+        .avatar {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             margin: 0 auto 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
+            font-weight: 700;
             font-size: 2rem;
-            color: white;
-            font-weight: 700;
         }
 
-        .member-card h4 {
-            font-size: 1.05rem;
-            color: var(--primary);
-            margin-bottom: 0.3rem;
-        }
+        .member-card h4 { color: var(--primary); margin-bottom: 0.5rem; }
+        .member-role { color: var(--text-secondary); font-size: 0.9rem; }
 
-        .member-card .member-role {
-            color: var(--text-light);
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .member-card .member-interest {
-            color: var(--text-gray);
-            font-size: 0.8rem;
-            line-height: 1.5;
-        }
-
-        .avatar-color-1 { background: linear-gradient(135deg, #667eea, #764ba2); }
-        .avatar-color-2 { background: linear-gradient(135deg, #f093fb, #f5576c); }
-        .avatar-color-3 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
-        .avatar-color-4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
-        .avatar-color-5 { background: linear-gradient(135deg, #fa709a, #fee140); }
-        .avatar-color-6 { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
-
-        /* ===== 论文发表 ===== */
-        .pub-filters {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .pub-filter-btn {
-            padding: 0.5rem 1.2rem;
-            border: 2px solid var(--border);
-            border-radius: 50px;
-            background: white;
-            color: var(--text-gray);
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .pub-filter-btn:hover,
-        .pub-filter-btn.active {
-            border-color: var(--primary);
-            background: var(--primary);
-            color: white;
-        }
-
-        .pub-year {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 2rem 0 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .pub-year::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
+        /* Publications */
         .pub-item {
-            background: var(--bg-white);
-            border-radius: var(--radius);
-            padding: 1.5rem 2rem;
-            margin-bottom: 1rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: var(--transition);
+            padding: 1.5rem;
             border-left: 4px solid transparent;
         }
 
         .pub-item:hover {
             border-left-color: var(--accent);
-            box-shadow: var(--shadow-hover);
         }
 
-        .pub-item .pub-title {
-            font-weight: 700;
-            font-size: 1.05rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            line-height: 1.5;
-        }
-
-        .pub-item .pub-authors {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .pub-item .pub-authors .highlight {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .pub-item .pub-venue {
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 0.8rem;
-        }
+        .pub-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.5rem; }
+        .pub-authors { color: var(--text-secondary); font-size: 0.9rem; }
+        .pub-venue { color: var(--accent); font-weight: 600; margin: 0.5rem 0; }
 
         .pub-tags {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
+            margin-top: 0.8rem;
         }
 
-        .pub-tag {
+        .tag {
             padding: 0.2rem 0.8rem;
             border-radius: 50px;
             font-size: 0.75rem;
             font-weight: 600;
         }
 
-        .pub-tag-pdf {
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
+        .tag-pdf { background: #e8f5e9; color: #2e7d32; }
+        .tag-code { background: #e3f2fd; color: #1565c0; }
+        .tag-award { background: #fce4ec; color: #c62828; }
 
-        .pub-tag-code {
-            background: #e3f2fd;
-            color: #1565c0;
-        }
-
-        .pub-tag-doi {
-            background: #fff3e0;
-            color: #e65100;
-        }
-
-        .pub-tag-award {
-            background: #fce4ec;
-            color: #c62828;
-        }
-
-        /* ===== 科研项目 ===== */
-        .project-timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .project-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--accent), var(--primary));
-            border-radius: 2px;
-        }
-
-        .project-item {
-            position: relative;
-            padding: 1.5rem 2rem;
-            margin-bottom: 1.5rem;
-            background: var(--bg-white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            margin-left: 1.5rem;
-        }
-
-        .project-item::before {
-            content: '';
-            position: absolute;
-            left: -2.35rem;
-            top: 2rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--accent);
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px var(--accent);
-        }
-
-        .project-item .project-period {
-            font-size: 0.85rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .project-item h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .project-item .project-source {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .project-item .project-funding {
-            color: var(--text-light);
-            font-size: 0.85rem;
-        }
-
-        .project-status {
-            display: inline-block;
-            padding: 0.15rem 0.7rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-left: 0.5rem;
-        }
-
-        .status-active {
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
-
-        .status-completed {
-            background: #f5f5f5;
-            color: #9e9e9e;
-        }
-
-        /* ===== 新闻动态 ===== */
-        .news-list {
-            display: grid;
-            gap: 1rem;
-        }
+        /* News */
+        .news-list { display: grid; gap: 1rem; }
 
         .news-item {
             display: flex;
             gap: 1.5rem;
             padding: 1.5rem;
-            background: var(--bg-white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            background: white;
+            border-radius: 8px;
             border: 1px solid var(--border);
-            transition: var(--transition);
             align-items: flex-start;
+            transition: all 0.3s;
         }
 
-        .news-item:hover {
-            box-shadow: var(--shadow-hover);
-        }
+        .news-item:hover { box-shadow: var(--shadow-md); }
 
         .news-date {
             background: var(--primary);
             color: white;
-            border-radius: 8px;
+            border-radius: 6px;
             padding: 0.8rem;
             text-align: center;
-            min-width: 65px;
+            min-width: 60px;
             flex-shrink: 0;
         }
 
-        .news-date .month {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            opacity: 0.8;
-        }
+        .news-date .day { font-size: 1.3rem; font-weight: 700; }
+        .news-date .month { font-size: 0.7rem; text-transform: uppercase; opacity: 0.8; }
 
-        .news-date .day {
-            font-size: 1.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .news-date .year {
-            font-size: 0.7rem;
-            opacity: 0.7;
-        }
-
-        .news-content h4 {
-            color: var(--primary);
-            margin-bottom: 0.3rem;
-            font-size: 1.05rem;
-        }
-
-        .news-content p {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-        }
-
-        .news-badge {
-            display: inline-block;
-            padding: 0.15rem 0.6rem;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-right: 0.5rem;
-            vertical-align: middle;
-        }
-
-        .badge-paper { background: #e3f2fd; color: #1565c0; }
-        .badge-award { background: #fff3e0; color: #e65100; }
-        .badge-talk { background: #f3e5f5; color: #7b1fa2; }
-        .badge-member { background: #e8f5e9; color: #2e7d32; }
-
-        /* ===== 实验室环境 / 相册 ===== */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--border);
-            background: white;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .gallery-img {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea55, #764ba255);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-light);
-            font-size: 3rem;
-        }
-
-        .gallery-caption {
-            padding: 1rem 1.2rem;
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            text-align: center;
-        }
-
-        /* ===== 加入我们 ===== */
+        /* Join Section */
         .join-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #3a7cc0 100%);
             color: white;
-            border-radius: var(--radius);
+            border-radius: 8px;
             padding: 3rem;
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
-        .join-section h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
+        .join-section h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+        .join-section p { opacity: 0.9; max-width: 600px; margin: 0 auto 2rem; }
 
-        .join-section p {
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            line-height: 1.8;
-        }
-
-        .join-positions {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-
-        .position-card {
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: var(--radius);
-            padding: 1.5rem 2rem;
-            min-width: 200px;
-            backdrop-filter: blur(10px);
-        }
-
-        .position-card h4 {
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .position-card p {
-            font-size: 0.85rem;
-            opacity: 0.8;
-            margin: 0;
-        }
-
-        /* ===== 联系方式 ===== */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .contact-card {
-            background: var(--bg-white);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-
-        .contact-card h3 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
+        /* Contact */
+        .contact-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 
         .contact-item {
             display: flex;
-            align-items: flex-start;
             gap: 1rem;
-            margin-bottom: 1.2rem;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
         }
 
         .contact-icon {
@@ -857,61 +283,22 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
             flex-shrink: 0;
+            font-size: 1.1rem;
         }
 
-        .contact-detail label {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .contact-detail p {
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-
-        .map-placeholder {
-            width: 100%;
-            height: 250px;
-            border-radius: var(--radius);
-            background: linear-gradient(135deg, #e8ecf1, #d5dce6);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-gray);
-        }
-
-        .map-placeholder .map-icon {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* ===== 页脚 ===== */
+        /* Footer */
         .footer {
             background: var(--primary);
             color: rgba(255,255,255,0.7);
             text-align: center;
             padding: 2rem;
-            font-size: 0.9rem;
+            margin-top: 3rem;
         }
 
-        .footer a {
-            color: rgba(255,255,255,0.9);
-        }
+        .footer a { color: rgba(255,255,255,0.9); }
 
-        .footer .footer-links {
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        /* ===== 回到顶部 ===== */
+        /* Back to Top */
         .back-to-top {
             position: fixed;
             bottom: 2rem;
@@ -922,755 +309,228 @@
             background: var(--primary);
             color: white;
             border: none;
-            font-size: 1.2rem;
             cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s;
             display: none;
             align-items: center;
             justify-content: center;
             z-index: 999;
         }
 
-        .back-to-top.show {
-            display: flex;
-        }
+        .back-to-top.show { display: flex; }
+        .back-to-top:hover { background: var(--accent); transform: translateY(-3px); }
 
-        .back-to-top:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        /* ===== 统计数据 ===== */
-        .stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            padding: 2rem 0;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: white;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* ===== 编辑提示标记 ===== */
-        .edit-hint {
-            display: inline-block;
-            background: #fff3cd;
-            color: #856404;
-            font-size: 0.7rem;
-            padding: 0.15rem 0.5rem;
-            border-radius: 3px;
-            margin-left: 0.5rem;
-            font-weight: 600;
-            vertical-align: middle;
-        }
-
-        /* ===== 响应式 ===== */
+        /* Responsive */
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--primary);
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            }
-
-            .nav-links.show {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1rem;
-            }
-
-            .stats-bar {
-                gap: 1.5rem;
-            }
-
-            .stat-number {
-                font-size: 1.8rem;
-            }
-
-            .pi-section {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .pi-contact {
-                justify-content: center;
-            }
-
-            .section {
-                padding: 3rem 1.2rem;
-            }
-
-            .section-bg .section-inner {
-                padding: 3rem 1.2rem;
-            }
-
-            .pub-item {
-                padding: 1.2rem;
-            }
-
-            .project-item {
-                padding: 1.2rem;
-                margin-left: 1rem;
-            }
-
-            .join-section {
-                padding: 2rem 1.5rem;
-            }
-
-            .news-item {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-        }
-
-        /* 平滑滚动 */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 70px;
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .section { padding: 3rem 1.5rem; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-
-    <!-- ===== 导航栏 ===== -->
+    <!-- Navigation -->
     <nav class="navbar">
-        <div class="container">
-            <div class="logo"><span>ICS</span> Research Group</div>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="active">首页</a></li>
-                <li><a href="#research">研究方向</a></li>
-                <li><a href="#team">团队成员</a></li>
-                <li><a href="#publications">学术论文</a></li>
-                <li><a href="#projects">科研项目</a></li>
-                <li><a href="#news">新闻动态</a></li>
-                <li><a href="#contact">联系我们</a></li>
-            </ul>
+        <div class="nav-inner">
+            <div class="logo">智能计算与系统<span style="color: var(--accent);">实验室</span></div>
+            <div class="nav-links">
+                <a href="#research">研究方向</a>
+                <a href="#team">团队成员</a>
+                <a href="#publications">论文发表</a>
+                <a href="#news">新闻动态</a>
+                <a href="#contact">联系我们</a>
+            </div>
         </div>
     </nav>
 
-    <!-- ===== 首页横幅 ===== -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>智能计算与系统研究组</h1>
-            <p class="subtitle">Intelligent Computing & Systems Research Group</p>
-            <p class="affiliation">XX大学 · 计算机科学与技术学院</p>
-            <div class="stats-bar">
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">发表论文</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">科研项目</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">20+</div>
-                    <div class="stat-label">团队成员</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">5</div>
-                    <div class="stat-label">发明专利</div>
-                </div>
-            </div>
-            <div class="hero-buttons">
-                <a href="#research" class="btn btn-primary">🔬 了解我们的研究</a>
-                <a href="#contact" class="btn btn-outline">📬 加入课题组</a>
-            </div>
+    <!-- Hero -->
+    <section class="hero">
+        <h1>智能计算与系统研究组</h1>
+        <p class="subtitle">探索计算科学的前沿，推动技术创新发展</p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary">了解更多</button>
+            <button class="btn btn-outline">加入我们</button>
         </div>
     </section>
 
-    <!-- ===== 研究方向 ===== -->
-    <section class="section" id="research">
+    <!-- Research -->
+    <section id="research" class="section">
         <h2 class="section-title">研究方向</h2>
-        <p class="section-desc">我们聚焦于人工智能与计算系统的前沿交叉领域，致力于推动理论创新与技术突破。</p>
-        <div class="research-grid">
-            <div class="research-card">
-                <div class="icon">🧠</div>
-                <h3>深度学习与神经网络</h3>
-                <p>研究新型神经网络架构设计、模型压缩与加速、自监督学习等前沿方向，推动深度学习理论与应用的发展。</p>
+        <p class="section-desc">致力于智能计算、系统优化、高性能计算等领域的研究</p>
+        <div class="grid grid-2">
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <h3>机器学习系统</h3>
+                <p>高效的分布式学习框架与优化算法研究</p>
             </div>
-            <div class="research-card">
-                <div class="icon">👁️</div>
-                <h3>计算机视觉</h3>
-                <p>聚焦于目标检测、图像分割、场景理解、三维视觉重建等核心问题，探索视觉智能的新范式。</p>
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>高性能计算</h3>
+                <p>GPU计算、并行处理与性能优化</p>
             </div>
-            <div class="research-card">
-                <div class="icon">📝</div>
-                <h3>自然语言处理</h3>
-                <p>研究大规模语言模型、文本生成、信息抽取、知识图谱构建等方向，推动语言智能技术进步。</p>
+            <div class="card">
+                <div class="card-icon">🔬</div>
+                <h3>系统设计</h3>
+                <p>分布式系统、存储系统与网络优化</p>
             </div>
-            <div class="research-card">
-                <div class="icon">⚡</div>
-                <h3>高性能计算系统</h3>
-                <p>面向AI工作负载的异构计算架构优化、分布式训练系统、智能编译器与运行时系统研究。</p>
-            </div>
-            <div class="research-card">
-                <div class="icon">🤖</div>
-                <h3>具身智能与机器人</h3>
-                <p>研究机器人感知、决策与控制的协同智能，探索大模型驱动的具身智能体技术。</p>
-            </div>
-            <div class="research-card">
-                <div class="icon">🔐</div>
-                <h3>AI安全与可信计算</h3>
-                <p>研究对抗攻击与防御、模型可解释性、联邦学习隐私保护、可信AI系统构建。</p>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>数据处理</h3>
+                <p>大规模数据管理与实时处理技术</p>
             </div>
         </div>
     </section>
 
-    <!-- ===== PI 介绍 ===== -->
-    <div class="section-bg">
-        <section class="section-inner" id="pi">
-            <h2 class="section-title">课题组负责人</h2>
-            <p class="section-desc">Principal Investigator</p>
-            <div class="pi-section">
-                <div class="pi-photo">
-                    <div class="pi-photo-placeholder">
-                        <div class="camera-icon">📷</div>
-                        <div class="photo-text">添加照片</div>
-                    </div>
-                </div>
-                <div class="pi-info">
-                    <h3>张三 教授 <span class="edit-hint">✏️ 修改姓名</span></h3>
-                    <div class="pi-title">博士生导师 / XX大学计算机学院</div>
-                    <p class="pi-bio">
-                        张三，XX大学计算机科学与技术学院教授、博士生导师。2010年于XX大学获得计算机科学博士学位，
-                        随后在MIT进行博士后研究。主要研究方向为深度学习、计算机视觉和高性能计算。
-                        在 NeurIPS、ICML、CVPR、ICLR 等顶级会议和期刊上发表论文50余篇，
-                        Google Scholar 引用3000余次。主持国家自然科学基金重点项目、面上项目等10余项课题。
-                        担任多个顶级会议的Area Chair和审稿人。
-                    </p>
-                    <div class="pi-contact">
-                        <div class="pi-contact-item">📧 zhangsan@university.edu.cn</div>
-                        <div class="pi-contact-item">🎓 <a href="#" style="color:inherit">Google Scholar</a></div>
-                        <div class="pi-contact-item">💻 <a href="#" style="color:inherit">GitHub</a></div>
-                        <div class="pi-contact-item">🔗 <a href="#" style="color:inherit">DBLP</a></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- ===== 团队成员 ===== -->
-    <section class="section" id="team">
+    <!-- Team -->
+    <section id="team" class="section" style="background: white; margin-left: -2rem; margin-right: -2rem; padding-left: 2rem; padding-right: 2rem;">
         <h2 class="section-title">团队成员</h2>
-        <p class="section-desc">我们拥有一支充满活力和创造力的研究团队</p>
-
-        <!-- 博士后 -->
-        <div class="team-category">
-            <h3>🎓 博士后研究员</h3>
-            <div class="team-grid">
-                <div class="member-card">
-                    <div class="member-avatar avatar-color-1">李</div>
-                    <h4>李四</h4>
-                    <div class="member-role">博士后 · 2023-至今</div>
-                    <div class="member-interest">研究方向：模型压缩与加速</div>
-                </div>
+        <p class="section-desc">优秀的研究人员和技术专家</p>
+        <div class="grid grid-3">
+            <div class="card member-card">
+                <div class="avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);">高</div>
+                <h4>高XX</h4>
+                <p class="member-role">Principal Investigator</p>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">机器学习、分布式系统</p>
+            </div>
+            <div class="card member-card">
+                <div class="avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c);">李</div>
+                <h4>李XX</h4>
+                <p class="member-role">博士生</p>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">高性能计算</p>
+            </div>
+            <div class="card member-card">
+                <div class="avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">王</div>
+                <h4>王XX</h4>
+                <p class="member-role">博士生</p>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">系统设计</p>
             </div>
         </div>
+    </section>
 
-        <!-- 博士生 -->
-        <div class="team-category">
-            <h3>📚 博士研究生</h3>
-            <div class="team-grid">
-                <div class="member-card">
-                    <div class="member-avatar avatar-color-2">王</div>
-                    <h4>王五</h4>
-                    <div class="member-role">博士三年级 · 2022级</div>
-                    <div class="member-interest">研究方向：计算机视觉</div>
-                </div>
-                <div class="member-card">
-                    <div class="member-avatar avatar-color-3">赵</div>
-                    <h4>赵六</h4>
-                    <div class="member-role">博士二年级 · 2023级</div>
-                    <div class="member-interest">研究方向：自然语言处理</div>
-                </div>
-                <div class="member-card">
-                    <div class="member-avatar avatar-color-4">孙</div>
-                    <h4>孙七</h4>
-                    <div class="member-role">博士一年级 · 2024级</div>
-                    <div class="member-interest">研究方向：具身智能</div>
+    <!-- Publications -->
+    <section id="publications" class="section">
+        <h2 class="section-title">代表性论文</h2>
+        <p class="section-desc">精选研究成果</p>
+        <div class="grid">
+            <div class="card pub-item">
+                <div class="pub-title">Deep Learning on Distributed Systems: A Comprehensive Study</div>
+                <div class="pub-authors">高XX*, 李XX, 王XX</div>
+                <div class="pub-venue">IEEE Transactions on Parallel and Distributed Systems, 2024</div>
+                <div class="pub-tags">
+                    <span class="tag tag-pdf">PDF</span>
+                    <span class="tag tag-code">Code</span>
                 </div>
             </div>
-        </div>
-
-        <!-- 硕士生 -->
-        <div class="team-category">
-            <h3>📖 硕士研究生</h3>
-            <div class="team-grid">
-                <div class="member-card">
-                    <div class="member-avatar avatar-color-5">周</div>
-                    <h4>周八</h4>
-                    <div class="member-role">硕士二年级 · 2023级</div>
-                    <div class="member-interest">研究方向：目标检测</div>
-                </div>
-                <div class="member-card">
-                    <div class="member-avatar avatar-color-6">吴</div>
-                    <h4>吴九</h4>
-                    <div class="member-role">硕士二年级 · 2023级</div>
-                    <div class="member-interest">研究方向：图像分割</div>
-                </div>
-                <div class="member-card">
-                    <div class="member-avatar avatar-color-1">郑</div>
-                    <h4>郑十</h4>
-                    <div class="member-role">硕士一年级 · 2024级</div>
-                    <div class="member-interest">研究方向：大语言模型</div>
-                </div>
-                <div class="member-card">
-                    <div class="member-avatar avatar-color-3">陈</div>
-                    <h4>陈十一</h4>
-                    <div class="member-role">硕士一年级 · 2024级</div>
-                    <div class="member-interest">研究方向：联邦学习</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 已毕业 -->
-        <div class="team-category">
-            <h3>🎉 已毕业成员（部分）</h3>
-            <div class="team-grid">
-                <div class="member-card" style="opacity: 0.75;">
-                    <div class="member-avatar avatar-color-4">刘</div>
-                    <h4>刘某某</h4>
-                    <div class="member-role">2023届博士 → XX公司 研究员</div>
-                    <div class="member-interest"></div>
-                </div>
-                <div class="member-card" style="opacity: 0.75;">
-                    <div class="member-avatar avatar-color-2">黄</div>
-                    <h4>黄某某</h4>
-                    <div class="member-role">2023届硕士 → XX大学 读博</div>
-                    <div class="member-interest"></div>
+            <div class="card pub-item">
+                <div class="pub-title">Optimizing GPU Memory for Large-Scale Neural Networks</div>
+                <div class="pub-authors">李XX, <span style="color: var(--primary); font-weight: 600;">高XX</span>, 王XX</div>
+                <div class="pub-venue">ACM SIGMOD International Conference, 2024</div>
+                <div class="pub-tags">
+                    <span class="tag tag-code">Code</span>
+                    <span class="tag tag-award">Award</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== 学术论文 ===== -->
-    <div class="section-bg">
-        <section class="section-inner" id="publications">
-            <h2 class="section-title">学术论文</h2>
-            <p class="section-desc">代表性论文（* 表示通讯作者）</p>
-
-            <!-- 筛选按钮 -->
-            <div class="pub-filters">
-                <button class="pub-filter-btn active" onclick="filterPubs('all', this)">全部</button>
-                <button class="pub-filter-btn" onclick="filterPubs('cv', this)">计算机视觉</button>
-                <button class="pub-filter-btn" onclick="filterPubs('nlp', this)">自然语言处理</button>
-                <button class="pub-filter-btn" onclick="filterPubs('ml', this)">机器学习</button>
-                <button class="pub-filter-btn" onclick="filterPubs('sys', this)">系统</button>
-            </div>
-
-            <!-- 2024 -->
-            <div class="pub-year">2024</div>
-
-            <div class="pub-item" data-category="cv">
-                <div class="pub-title">Efficient Vision Transformer with Progressive Tokenization</div>
-                <div class="pub-authors">王五, <span class="highlight">张三*</span>, 李四</div>
-                <div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2024)</div>
-                <div class="pub-tags">
-                    <span class="pub-tag pub-tag-pdf">📄 PDF</span>
-                    <span class="pub-tag pub-tag-code">💻 Code</span>
-                    <span class="pub-tag pub-tag-award">🏆 Oral</span>
+    <!-- News -->
+    <section id="news" class="section" style="background: white; margin-left: -2rem; margin-right: -2rem; padding-left: 2rem; padding-right: 2rem;">
+        <h2 class="section-title">新闻动态</h2>
+        <p class="section-desc">实验室最新的研究进展和活动</p>
+        <div class="news-list">
+            <div class="card news-item" style="border: 1px solid var(--border);">
+                <div class="news-date">
+                    <div class="day">28</div>
+                    <div class="month">May</div>
+                </div>
+                <div>
+                    <h4>新论文发表在 IEEE TPDS</h4>
+                    <p>我们的最新研究成果关于分布式深度学习的优化已发表</p>
                 </div>
             </div>
-
-            <div class="pub-item" data-category="nlp">
-                <div class="pub-title">Adaptive Retrieval-Augmented Generation for Knowledge-Intensive Tasks</div>
-                <div class="pub-authors">赵六, 郑十, <span class="highlight">张三*</span></div>
-                <div class="pub-venue">Annual Meeting of the Association for Computational Linguistics (ACL 2024)</div>
-                <div class="pub-tags">
-                    <span class="pub-tag pub-tag-pdf">📄 PDF</span>
-                    <span class="pub-tag pub-tag-code">💻 Code</span>
+            <div class="card news-item" style="border: 1px solid var(--border);">
+                <div class="news-date">
+                    <div class="day">15</div>
+                    <div class="month">May</div>
                 </div>
-            </div>
-
-            <div class="pub-item" data-category="ml">
-                <div class="pub-title">On the Convergence of Federated Learning with Non-IID Data Distributions</div>
-                <div class="pub-authors">陈十一, <span class="highlight">张三*</span></div>
-                <div class="pub-venue">International Conference on Machine Learning (ICML 2024)</div>
-                <div class="pub-tags">
-                    <span class="pub-tag pub-tag-pdf">📄 PDF</span>
-                    <span class="pub-tag pub-tag-doi">🔗 DOI</span>
+                <div>
+                    <h4>欢迎新成员加入团队</h4>
+                    <p>今年招收博士研究生3名，硕士研究生5名</p>
                 </div>
-            </div>
-
-            <!-- 2023 -->
-            <div class="pub-year">2023</div>
-
-            <div class="pub-item" data-category="cv">
-                <div class="pub-title">Multi-Scale Feature Aggregation for Dense Object Detection</div>
-                <div class="pub-authors">周八, 王五, <span class="highlight">张三*</span></div>
-                <div class="pub-venue">IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2023</div>
-                <div class="pub-tags">
-                    <span class="pub-tag pub-tag-pdf">📄 PDF</span>
-                    <span class="pub-tag pub-tag-doi">🔗 DOI</span>
-                </div>
-            </div>
-
-            <div class="pub-item" data-category="sys">
-                <div class="pub-title">Heterogeneous-Aware Distributed Training System for Large Language Models</div>
-                <div class="pub-authors">李四, <span class="highlight">张三*</span></div>
-                <div class="pub-venue">USENIX Symposium on Operating Systems Design and Implementation (OSDI 2023)</div>
-                <div class="pub-tags">
-                    <span class="pub-tag pub-tag-pdf">📄 PDF</span>
-                    <span class="pub-tag pub-tag-code">💻 Code</span>
-                </div>
-            </div>
-
-            <div class="pub-item" data-category="ml">
-                <div class="pub-title">Self-Supervised Contrastive Learning with Curriculum Data Augmentation</div>
-                <div class="pub-authors">刘某某, <span class="highlight">张三*</span></div>
-                <div class="pub-venue">Neural Information Processing Systems (NeurIPS 2023)</div>
-                <div class="pub-tags">
-                    <span class="pub-tag pub-tag-pdf">📄 PDF</span>
-                    <span class="pub-tag pub-tag-award">🏆 Spotlight</span>
-                </div>
-            </div>
-
-            <p style="text-align: center; margin-top: 2rem; color: var(--text-light);">
-                <a href="#">查看完整论文列表 →</a>
-            </p>
-        </section>
-    </div>
-
-    <!-- ===== 科研项目 ===== -->
-    <section class="section" id="projects">
-        <h2 class="section-title">科研项目</h2>
-        <p class="section-desc">主持及参与的主要科研项目</p>
-
-        <div class="project-timeline">
-            <div class="project-item">
-                <div class="project-period">2024.01 - 2027.12 <span class="project-status status-active">进行中</span></div>
-                <h4>面向大规模视觉模型的高效训练与推理关键技术研究</h4>
-                <div class="project-source">国家自然科学基金重点项目（No. 62XXXXXXX）</div>
-                <div class="project-funding">直接经费：260万元 | 项目负责人</div>
-            </div>
-            <div class="project-item">
-                <div class="project-period">2023.01 - 2025.12 <span class="project-status status-active">进行中</span></div>
-                <h4>异构计算环境下的分布式深度学习系统优化</h4>
-                <div class="project-source">国家自然科学基金面上项目（No. 62XXXXXXX）</div>
-                <div class="project-funding">直接经费：54万元 | 项目负责人</div>
-            </div>
-            <div class="project-item">
-                <div class="project-period">2022.06 - 2025.05 <span class="project-status status-active">进行中</span></div>
-                <h4>面向智慧城市的多模态感知与理解平台</h4>
-                <div class="project-source">科技部国家重点研发计划子课题</div>
-                <div class="project-funding">子课题经费：150万元 | 子课题负责人</div>
-            </div>
-            <div class="project-item">
-                <div class="project-period">2020.01 - 2023.12 <span class="project-status status-completed">已结题</span></div>
-                <h4>基于深度学习的目标检测与场景理解方法研究</h4>
-                <div class="project-source">国家自然科学基金面上项目（No. 61XXXXXXX）</div>
-                <div class="project-funding">直接经费：63万元 | 项目负责人 | 结题评估：优秀</div>
-            </div>
-            <div class="project-item">
-                <div class="project-period">2021.09 - 2024.08 <span class="project-status status-completed">已结题</span></div>
-                <h4>XX企业联合研究项目——智能视觉质检系统</h4>
-                <div class="project-source">企业横向合作项目</div>
-                <div class="project-funding">合同经费：120万元 | 项目负责人</div>
             </div>
         </div>
     </section>
 
-    <!-- ===== 新闻动态 ===== -->
-    <div class="section-bg">
-        <section class="section-inner" id="news">
-            <h2 class="section-title">新闻动态</h2>
-            <p class="section-desc">课题组最新消息与动态</p>
-
-            <div class="news-list">
-                <div class="news-item">
-                    <div class="news-date">
-                        <div class="month">Jun</div>
-                        <div class="day">15</div>
-                        <div class="year">2024</div>
-                    </div>
-                    <div class="news-content">
-                        <h4><span class="news-badge badge-paper">论文</span> 课题组论文被 CVPR 2024 录用为 Oral 报告</h4>
-                        <p>王五同学关于高效视觉Transformer的论文被 CVPR 2024 录用为 Oral presentation，录用率仅 3.3%，祝贺！🎉</p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">
-                        <div class="month">May</div>
-                        <div class="day">20</div>
-                        <div class="year">2024</div>
-                    </div>
-                    <div class="news-content">
-                        <h4><span class="news-badge badge-award">荣誉</span> 张三教授入选全球高被引科学家榜单</h4>
-                        <p>张三教授入选2024年度 Clarivate 全球高被引科学家榜单（计算机科学领域）。</p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">
-                        <div class="month">Apr</div>
-                        <div class="day">10</div>
-                        <div class="year">2024</div>
-                    </div>
-                    <div class="news-content">
-                        <h4><span class="news-badge badge-talk">报告</span> 张三教授应邀在 VALSE 2024 做特邀报告</h4>
-                        <p>张三教授在 VALSE 2024 年度研讨会上做了题为"高效视觉计算的新进展"的特邀报告。</p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">
-                        <div class="month">Mar</div>
-                        <div class="day">01</div>
-                        <div class="year">2024</div>
-                    </div>
-                    <div class="news-content">
-                        <h4><span class="news-badge badge-member">团队</span> 欢迎新成员加入课题组</h4>
-                        <p>欢迎2024级博士生孙七、硕士生郑十和陈十一加入课题组，期待你们的精彩表现！</p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">
-                        <div class="month">Jan</div>
-                        <div class="day">15</div>
-                        <div class="year">2024</div>
-                    </div>
-                    <div class="news-content">
-                        <h4><span class="news-badge badge-award">荣誉</span> 赵六同学获得国家奖学金</h4>
-                        <p>赵六同学凭借在自然语言处理领域的出色研究成果，荣获2023年度博士研究生国家奖学金。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- ===== 实验室风采 ===== -->
-    <section class="section" id="gallery">
-        <h2 class="section-title">实验室风采</h2>
-        <p class="section-desc">记录课题组的精彩瞬间</p>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <div class="gallery-img">🏢</div>
-                <div class="gallery-caption">实验室工作环境</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-img">🎤</div>
-                <div class="gallery-caption">学术会议交流</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-img">🎊</div>
-                <div class="gallery-caption">课题组年度聚会</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-img">🖥️</div>
-                <div class="gallery-caption">GPU 计算集群</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-img">📋</div>
-                <div class="gallery-caption">组会研讨</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-img">🎓</div>
-                <div class="gallery-caption">毕业合影留念</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== 加入我们 ===== -->
+    <!-- Join -->
     <section class="section">
-        <div class="join-section" id="join">
-            <h3>🌟 加入我们</h3>
-            <p>课题组常年招收有科研热情的博士后、博士生和硕士生。我们提供优良的科研环境、充足的计算资源和国际化的学术交流机会。</p>
-            <div class="join-positions">
-                <div class="position-card">
-                    <h4>🎓 博士后</h4>
-                    <p>年薪30-50万<br>优秀者推荐教职</p>
-                </div>
-                <div class="position-card">
-                    <h4>📚 博士研究生</h4>
-                    <p>全额奖学金<br>优秀生源奖励</p>
-                </div>
-                <div class="position-card">
-                    <h4>📖 硕士研究生</h4>
-                    <p>助研补贴<br>推荐深造/就业</p>
-                </div>
-                <div class="position-card">
-                    <h4>💡 本科实习生</h4>
-                    <p>科研启蒙训练<br>推荐信支持</p>
-                </div>
-            </div>
-            <a href="mailto:zhangsan@university.edu.cn" class="btn btn-primary" style="font-size: 1.05rem;">
-                📧 发送申请邮件
-            </a>
-            <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.7;">请附上简历、成绩单及研究兴趣说明</p>
+        <div class="join-section">
+            <h3>加入我们</h3>
+            <p>我们正在寻找优秀的博士生、硕士生和博士后加入研究团队，一起探索计算科学的前沿</p>
+            <button class="btn btn-primary">联系我们</button>
         </div>
     </section>
 
-    <!-- ===== 联系方式 ===== -->
-    <div class="section-bg">
-        <section class="section-inner" id="contact">
-            <h2 class="section-title">联系我们</h2>
-            <p class="section-desc">欢迎学术交流与合作</p>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <h3>📮 联系信息</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div class="contact-detail">
-                            <label>电子邮箱</label>
-                            <p>zhangsan@university.edu.cn</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div class="contact-detail">
-                            <label>办公电话</label>
-                            <p>+86-XXX-XXXX-XXXX</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-detail">
-                            <label>办公地址</label>
-                            <p>XX省XX市XX区XX路XX号<br>XX大学计算机学院 XXX室</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📮</div>
-                        <div class="contact-detail">
-                            <label>邮政编码</label>
-                            <p>XXXXXX</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <h3>🗺️ 地理位置</h3>
-                    <div class="map-placeholder">
-                        <div class="map-icon">📍</div>
-                        <p>在此处嵌入地图</p>
-                        <p style="font-size: 0.8rem; margin-top: 0.5rem;">可替换为百度地图/高德地图 iframe</p>
+    <!-- Contact -->
+    <section id="contact" class="section" style="background: white; margin-left: -2rem; margin-right: -2rem; padding-left: 2rem; padding-right: 2rem;">
+        <h2 class="section-title">联系方式</h2>
+        <p class="section-desc">欢迎与我们沟通联系</p>
+        <div class="grid contact-grid">
+            <div class="card">
+                <h3>邮箱</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">✉</div>
+                    <div>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Email</p>
+                        <p>lab@example.com</p>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
-
-    <!-- ===== 页脚 ===== -->
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="#">学院官网</a>
-            <a href="#">学校主页</a>
-            <a href="#">Google Scholar</a>
-            <a href="#">GitHub</a>
+            <div class="card">
+                <h3>电话</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">☎</div>
+                    <div>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Tel</p>
+                        <p>+86 (0)10-xxxxxxxx</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>地址</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Location</p>
+                        <p>北京市, 中国</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p>© 2024 智能计算与系统研究组 · XX大学计算机科学与技术学院</p>
-        <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.6;">最后更新：2024年6月</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 智能计算与系统研究组 | <a href="#">隐私政策</a> | <a href="#">联系方式</a></p>
     </footer>
 
-    <!-- 回到顶部按钮 -->
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
 
-    <!-- ===== JavaScript ===== -->
     <script>
-        // 移动端导航菜单切换
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('show');
-        }
-
-        // 导航链接点击后关闭菜单（移动端）
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('show');
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
-        // 滚动时高亮当前导航项
-        const sections = document.querySelectorAll('section[id], div[id]');
-        const navLinks = document.querySelectorAll('.nav-links a');
-
+        // Back to top button
         window.addEventListener('scroll', () => {
-            let current = '';
-            const scrollPos = window.scrollY + 100;
-
-            // 回到顶部按钮显隐
-            const backToTop = document.getElementById('backToTop');
-            if (window.scrollY > 500) {
-                backToTop.classList.add('show');
-            } else {
-                backToTop.classList.remove('show');
-            }
-
-            // 导航高亮
-            document.querySelectorAll('[id]').forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (scrollPos >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // 回到顶部
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // 论文筛选
-        function filterPubs(category, btn) {
-            // 更新按钮状态
-            document.querySelectorAll('.pub-filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            // 筛选论文
-            document.querySelectorAll('.pub-item').forEach(item => {
-                if (category === 'all' || item.dataset.category === category) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-
-        // 导航栏滚动效果
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.boxShadow = '0 2px 30px rgba(0,0,0,0.2)';
-            } else {
-                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
-            }
+            document.querySelector('.back-to-top').classList.toggle('show', window.scrollY > 300);
         });
     </script>
-
 </body>
 </html>
