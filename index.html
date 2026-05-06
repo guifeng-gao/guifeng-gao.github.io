@@ -188,6 +188,14 @@
             color: white;
             font-weight: 700;
             box-shadow: var(--shadow-lg);
+            object-fit: cover;
+        }
+
+        .pi-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            object-fit: cover;
         }
 
         .pi-info h3 { color: var(--primary); font-size: 1.5rem; margin-bottom: 0.5rem; }
@@ -218,6 +226,14 @@
             color: white;
             font-weight: 700;
             font-size: 2rem;
+            object-fit: cover;
+            overflow: hidden;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .member-card h4 { color: var(--primary); margin-bottom: 0.5rem; }
@@ -426,7 +442,7 @@
                 <h3>Dr. Gui-Feng Gao (高贵锋)</h3>
                 <div class="pi-title">Associate Research Fellow</div>
                 <div class="pi-bio">
-                    Dr. Gui-Feng Gao received his Ph.D. in Ecology from Xiamen University in 2018. He completed his postdoctoral training at the Nanjing Institute of Soil Science, Chinese Academy of Sciences (2019-2021), where he served as Assistant Research Fellow (2021-2023) and is currently serving as Associate Research Fellow (since 2023). His research focuses on soil microbiome biogeography and the assembly processes of microbial communities in coastal wetland ecosystems under environmental change.
+                    Dr. Gui-Feng Gao received his Ph.D. in Ecology from Xiamen University in 2018. He completed his postdoctoral training at the Nanjing Institute of Soil Science, Chinese Academy of Sciences. His research focuses on soil microbiome ecology and microbial community assembly in coastal wetlands.
                 </div>
                 <div class="pi-stat">
                     <div class="pi-stat-label">Field:</div>
@@ -462,19 +478,28 @@
         <p class="section-desc">A dedicated team of researchers and ecologists</p>
         <div class="grid grid-3">
             <div class="card member-card">
-                <div class="avatar" style="background: linear-gradient(135deg, #2d5016, #4a7c3d);">高</div>
+                <div class="avatar" style="background: linear-gradient(135deg, #2d5016, #4a7c3d);">
+                    <img src="images/gao.jpg" alt="Dr. Gui-Feng Gao" onerror="this.style.display='none'">
+                    <span style="display:none;">高</span>
+                </div>
                 <h4>Dr. Gui-Feng Gao</h4>
                 <p class="member-role">Principal Investigator</p>
                 <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">Soil microbiome ecology, microbial metabolism, coastal wetlands</p>
             </div>
             <div class="card member-card">
-                <div class="avatar" style="background: linear-gradient(135deg, #8b6f47, #b89968);">李</div>
+                <div class="avatar" style="background: linear-gradient(135deg, #8b6f47, #b89968);">
+                    <img src="images/li.jpg" alt="Ph.D. Student Li" onerror="this.style.display='none'">
+                    <span style="display:none;">李</span>
+                </div>
                 <h4>Ph.D. Student</h4>
                 <p class="member-role">Research Focus: Microbial Diversity</p>
                 <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">Microbial diversity analysis and community composition</p>
             </div>
             <div class="card member-card">
-                <div class="avatar" style="background: linear-gradient(135deg, #5a8c4f, #7aac6f);">王</div>
+                <div class="avatar" style="background: linear-gradient(135deg, #5a8c4f, #7aac6f);">
+                    <img src="images/wang.jpg" alt="Ph.D. Student Wang" onerror="this.style.display='none'">
+                    <span style="display:none;">王</span>
+                </div>
                 <h4>Ph.D. Student</h4>
                 <p class="member-role">Research Focus: Community Assembly</p>
                 <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">Microbial community assembly and environmental responses</p>
@@ -558,41 +583,41 @@
         <h3 style="color: var(--primary); margin: 2rem 0 1rem 0; font-size: 1.3rem;">Principal Investigator</h3>
         <div class="project-item">
             <div class="project-title">National Key Research & Development Program</div>
-            <div class="project-details"><strong>Title:</strong> Biocontrol and Herbicide Degradation Remediation Technology for Soil-borne Diseases in Dryland Agriculture | <strong>Period:</strong> 2024.12-2027.11 | <strong>Budget:</strong> ¥3.7M</div>
+            <div class="project-details"><strong>Title:</strong> Biocontrol and Herbicide Degradation Remediation Technology for Soil-borne Diseases in Dryland Agriculture | <strong>Period:</strong> 2023-2027</div>
         </div>
         <div class="project-item">
             <div class="project-title">National Natural Science Foundation - General Program</div>
-            <div class="project-details"><strong>Title:</strong> Spatio-temporal Distribution and Carbon Accumulation Mechanisms of Soil Carbon-fixing Microbiota in Invasive Spartina alterniflora Wetlands | <strong>Period:</strong> 2025.01-2028.12 | <strong>Budget:</strong> ¥470K</div>
+            <div class="project-details"><strong>Title:</strong> Spatio-temporal Distribution and Carbon Accumulation Mechanisms of Soil Carbon-fixing Microbiota in Invasive Spartina alterniflora Wetlands | <strong>Period:</strong> 2022-2025</div>
         </div>
         <div class="project-item">
             <div class="project-title">National Natural Science Foundation - Young Scientist Program</div>
-            <div class="project-details"><strong>Title:</strong> Response Mechanisms of Soil Microbial Communities to Sea-level Rise in Typical Southern Coastal Wetlands | <strong>Period:</strong> 2020.01-2022.12 | <strong>Budget:</strong> ¥240K</div>
+            <div class="project-details"><strong>Title:</strong> Response Mechanisms of Soil Microbial Communities to Sea-level Rise in Typical Southern Coastal Wetlands | <strong>Period:</strong> 2020-2023</div>
         </div>
         <div class="project-item">
             <div class="project-title">Jiangsu Province Postdoctoral Fellowship</div>
-            <div class="project-details"><strong>Title:</strong> Distribution and Driving Mechanisms of Soil Microbial Communities Under Spartina alterniflora Invasion | <strong>Period:</strong> 2020.01-2022.12 | <strong>Budget:</strong> ¥160K</div>
+            <div class="project-details"><strong>Title:</strong> Distribution and Driving Mechanisms of Soil Microbial Communities Under Spartina alterniflora Invasion | <strong>Period:</strong> 2020-2022</div>
         </div>
 
         <h3 style="color: var(--primary); margin: 2rem 0 1rem 0; font-size: 1.3rem;">Co-Investigator</h3>
         <div class="project-item">
             <div class="project-title">National Key Research & Development Program</div>
-            <div class="project-details"><strong>Title:</strong> Microbiological Regulation and Yield Enhancement of Active Organic Matter in Dryland Soil | <strong>Period:</strong> 2022.11-2026.10</div>
+            <div class="project-details"><strong>Title:</strong> Microbiological Regulation and Yield Enhancement of Active Organic Matter in Dryland Soil | <strong>Period:</strong> 2022-2026</div>
         </div>
         <div class="project-item">
             <div class="project-title">Chinese Academy of Sciences Strategic Priority Program Sub-project</div>
-            <div class="project-details"><strong>Title:</strong> Targeted Cultivation of Key Species for Soil Biological Network Health | <strong>Period:</strong> 2021.07-2026.06</div>
+            <div class="project-details"><strong>Title:</strong> Targeted Cultivation of Key Species for Soil Biological Network Health | <strong>Period:</strong> 2021-2026</div>
         </div>
         <div class="project-item">
             <div class="project-title">National Agricultural Major Science & Technology Project Sub-task</div>
-            <div class="project-details"><strong>Title:</strong> Evaluation and Diagnosis of Soil Biological Health in Black Soil | <strong>Period:</strong> 2022.11-2026.10</div>
+            <div class="project-details"><strong>Title:</strong> Evaluation and Diagnosis of Soil Biological Health in Black Soil | <strong>Period:</strong> 2022-2026</div>
         </div>
         <div class="project-item">
             <div class="project-title">National Natural Science Foundation - Key Program</div>
-            <div class="project-details"><strong>Title:</strong> Evolution and Conservation of Microbial Diversity in Typical Qinghai-Tibet Plateau Wetlands Under Climate Change | <strong>Period:</strong> 2023.01-2027.12</div>
+            <div class="project-details"><strong>Title:</strong> Evolution and Conservation of Microbial Diversity in Typical Qinghai-Tibet Plateau Wetlands Under Climate Change | <strong>Period:</strong> 2020-2024</div>
         </div>
         <div class="project-item">
             <div class="project-title">National Natural Science Foundation - Major Research Plan</div>
-            <div class="project-details"><strong>Title:</strong> Distribution and Function of Methane-oxidizing Microorganisms in Qinghai-Tibet Plateau Wetlands | <strong>Period:</strong> 2020.01-2022.12</div>
+            <div class="project-details"><strong>Title:</strong> Distribution and Function of Methane-oxidizing Microorganisms in Qinghai-Tibet Plateau Wetlands | <strong>Period:</strong> 2020-2022</div>
         </div>
     </section>
 
@@ -636,7 +661,7 @@
                 </div>
                 <div>
                     <h4>Graduate Student Recruitment 2026</h4>
-                    <p>We are actively recruiting Ph.D. and Master's students for the 2026 academic year. Prospective students interested in soil ecology and microbiology are welcome to join our growing research team.</p>
+                    <p>We are actively recruiting Ph.D. and Master's students for the 2026 academic year. Prospective students interested in soil ecology and microbiology are welcome to join our growing research group.</p>
                 </div>
             </div>
         </div>
@@ -646,7 +671,7 @@
     <section class="section">
         <div class="join-section">
             <h3>Join Our Research Group</h3>
-            <p>We are seeking talented Ph.D. students, Master's students, and postdoctoral researchers passionate about soil ecology and microbiology. If you're interested in exploring the hidden world of soil microbiomes and their ecological functions in coastal wetland ecosystems, we'd love to hear from you.</p>
+            <p>We are seeking talented Ph.D. students, Master's students, and postdoctoral researchers passionate about soil ecology and microbiology. If you're interested in exploring the hidden world of soil microbes, please contact us.</p>
             <button class="btn btn-primary" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Get in Touch</button>
         </div>
     </section>
@@ -710,6 +735,14 @@
         // Back to top button
         window.addEventListener('scroll', () => {
             document.querySelector('.back-to-top').classList.toggle('show', window.scrollY > 300);
+        });
+
+        // Show fallback text if image fails to load
+        document.querySelectorAll('.avatar img').forEach(img => {
+            img.addEventListener('error', () => {
+                const span = img.parentElement.querySelector('span');
+                if (span) span.style.display = 'block';
+            });
         });
     </script>
 </body>
