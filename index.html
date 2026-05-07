@@ -437,12 +437,15 @@
     <section id="about" class="section" style="background: white; margin-left: -2rem; margin-right: -2rem; padding-left: 2rem; padding-right: 2rem;">
         <h2 class="section-title">About us</h2>
         <div class="pi-profile">
-            <div class="pi-avatar">高</div>
+            <div class="pi-avatar">
+                <img src="images/gao.jpg" alt="Dr. Gui-Feng Gao" onerror="this.style.display='none'">
+                <span style="display:none;">高</span>
+            </div>
             <div class="pi-info">
                 <h3>Dr. Gui-Feng Gao (高贵锋)</h3>
                 <div class="pi-title">Associate Research Fellow</div>
                 <div class="pi-bio">
-                    Dr. Gui-Feng Gao received his Ph.D. in Ecology from Xiamen University in 2018. He completed his postdoctoral training at the Nanjing Institute of Soil Science, Chinese Academy of Sciences. His research focuses on soil microbiome ecology and microbial community assembly in coastal wetlands.
+                    Dr. Gui-Feng Gao received his Ph.D. in Ecology from Xiamen University in 2018. He completed his postdoctoral training at the Nanjing Institute of Soil Science, Chinese Academy of Sciences, and is currently an Associate Research Fellow at ISSAS-CAS. His research focuses on soil microbiome biogeography and how microbial communities respond to environmental changes in coastal ecosystems.
                 </div>
                 <div class="pi-stat">
                     <div class="pi-stat-label">Field:</div>
@@ -587,11 +590,11 @@
         </div>
         <div class="project-item">
             <div class="project-title">National Natural Science Foundation - General Program</div>
-            <div class="project-details"><strong>Title:</strong> Spatio-temporal Distribution and Carbon Accumulation Mechanisms of Soil Carbon-fixing Microbiota in Invasive Spartina alterniflora Wetlands | <strong>Period:</strong> 2022-2025</div>
+            <div class="project-details"><strong>Title:</strong> Spatio-temporal Distribution and Carbon Accumulation Mechanisms of Soil Carbon-fixing Microbiota in Invasive Spartina alterniflora Wetlands | <strong>Period:</strong> 2024-2027</div>
         </div>
         <div class="project-item">
             <div class="project-title">National Natural Science Foundation - Young Scientist Program</div>
-            <div class="project-details"><strong>Title:</strong> Response Mechanisms of Soil Microbial Communities to Sea-level Rise in Typical Southern Coastal Wetlands | <strong>Period:</strong> 2020-2023</div>
+            <div class="project-details"><strong>Title:</strong> Response Mechanisms of Soil Microbial Communities to Sea-level Rise in Typical Southern Coastal Wetlands | <strong>Period:</strong> 2021-2023</div>
         </div>
         <div class="project-item">
             <div class="project-title">Jiangsu Province Postdoctoral Fellowship</div>
@@ -613,7 +616,7 @@
         </div>
         <div class="project-item">
             <div class="project-title">National Natural Science Foundation - Key Program</div>
-            <div class="project-details"><strong>Title:</strong> Evolution and Conservation of Microbial Diversity in Typical Qinghai-Tibet Plateau Wetlands Under Climate Change | <strong>Period:</strong> 2020-2024</div>
+            <div class="project-details"><strong>Title:</strong> Evolution and Conservation of Microbial Diversity in Typical Qinghai-Tibet Plateau Wetlands Under Climate Change | <strong>Period:</strong> 2023-2027</div>
         </div>
         <div class="project-item">
             <div class="project-title">National Natural Science Foundation - Major Research Plan</div>
@@ -661,7 +664,7 @@
                 </div>
                 <div>
                     <h4>Graduate Student Recruitment 2026</h4>
-                    <p>We are actively recruiting Ph.D. and Master's students for the 2026 academic year. Prospective students interested in soil ecology and microbiology are welcome to join our growing research group.</p>
+                    <p>We are actively recruiting Ph.D. and Master's students for the 2026 academic year. Prospective students interested in soil ecology and microbiology are welcome to join our growing research team.</p>
                 </div>
             </div>
         </div>
@@ -671,7 +674,7 @@
     <section class="section">
         <div class="join-section">
             <h3>Join Our Research Group</h3>
-            <p>We are seeking talented Ph.D. students, Master's students, and postdoctoral researchers passionate about soil ecology and microbiology. If you're interested in exploring the hidden world of soil microbes, please contact us.</p>
+            <p>We are seeking talented Ph.D. students, Master's students, and postdoctoral researchers passionate about soil ecology and microbiology. If you're interested in exploring the hidden worlds beneath our feet, we'd love to hear from you.</p>
             <button class="btn btn-primary" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Get in Touch</button>
         </div>
     </section>
@@ -744,6 +747,15 @@
                 if (span) span.style.display = 'block';
             });
         });
+
+        // Handle PI avatar image load/error
+        const piAvatar = document.querySelector('.pi-avatar img');
+        if (piAvatar) {
+            piAvatar.addEventListener('error', () => {
+                const span = piAvatar.parentElement.querySelector('span');
+                if (span) span.style.display = 'block';
+            });
+        }
     </script>
 </body>
 </html>
