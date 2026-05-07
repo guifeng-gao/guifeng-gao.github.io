@@ -90,17 +90,6 @@
             border: none;
         }
 
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #7a5f3c;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(139, 111, 71, 0.3);
-        }
-
         .btn-outline {
             background: transparent;
             color: white;
@@ -195,7 +184,20 @@
             transform: scale(1.1);
         }
 
-        /* Sections */
+        /* Section Wrapper - Full Width Background */
+        .section-wrapper {
+            width: 100%;
+        }
+
+        .section-wrapper.bg-white {
+            background: white;
+        }
+
+        .section-wrapper.bg-light {
+            background: var(--bg-light);
+        }
+
+        /* Section Content - Centered */
         .section {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -249,7 +251,6 @@
             box-shadow: var(--shadow-lg);
         }
 
-        .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
         .card h3 { color: var(--primary); margin-bottom: 1rem; }
         .card p { color: var(--text-secondary); }
 
@@ -290,9 +291,18 @@
         .pi-stat-label { color: var(--text-secondary); min-width: 100px; }
         .pi-stat-value { color: var(--primary); font-weight: 600; }
 
-        @media (max-width: 768px) {
-            .pi-profile { grid-template-columns: 1fr; }
+        /* Research Areas */
+        .research-areas {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin-top: 2rem;
         }
+
+        .research-areas h4 { color: var(--primary); margin-bottom: 1rem; }
+        .research-areas ol { margin-left: 1.5rem; color: var(--text-secondary); }
+        .research-areas li { margin-bottom: 0.5rem; }
 
         /* Team */
         .member-card {
@@ -343,37 +353,6 @@
         .pub-venue { color: var(--accent); font-weight: 600; margin: 0.5rem 0; }
         .pub-year { color: var(--text-secondary); font-size: 0.85rem; }
 
-        .pub-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-top: 0.8rem;
-        }
-
-        .tag {
-            padding: 0.2rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .tag-pdf { background: #e8f5e9; color: #2e7d32; }
-        .tag-code { background: #e3f2fd; color: #1565c0; }
-        .tag-award { background: #fce4ec; color: #c62828; }
-
-        /* Research Areas */
-        .research-areas {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            margin-top: 2rem;
-        }
-
-        .research-areas h4 { color: var(--primary); margin-bottom: 1rem; }
-        .research-areas ol { margin-left: 1.5rem; color: var(--text-secondary); }
-        .research-areas li { margin-bottom: 0.5rem; }
-
         /* Projects */
         .project-item {
             background: white;
@@ -385,87 +364,6 @@
 
         .project-title { font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
         .project-details { color: var(--text-secondary); font-size: 0.9rem; }
-
-        /* News Carousel */
-        .news-carousel-container {
-            position: relative;
-            background: white;
-            border-radius: 8px;
-            padding: 0;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-        }
-
-        .news-carousel {
-            display: flex;
-            gap: 0;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .news-carousel::-webkit-scrollbar {
-            display: none;
-        }
-
-        .news-carousel-slide {
-            flex: 0 0 100%;
-            min-width: 100%;
-            padding: 2rem;
-            scroll-snap-align: start;
-            display: flex;
-            gap: 2rem;
-            align-items: flex-start;
-        }
-
-        .news-carousel-date {
-            background: var(--primary);
-            color: white;
-            border-radius: 6px;
-            padding: 1rem;
-            text-align: center;
-            flex-shrink: 0;
-            min-width: 80px;
-        }
-
-        .news-carousel-date .day { font-size: 1.8rem; font-weight: 700; }
-        .news-carousel-date .month { font-size: 0.8rem; text-transform: uppercase; opacity: 0.9; }
-
-        .news-carousel-content h4 { color: var(--primary); margin-bottom: 0.8rem; font-size: 1.1rem; }
-        .news-carousel-content p { color: var(--text-secondary); line-height: 1.6; }
-
-        /* Carousel controls */
-        .carousel-controls {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            display: flex;
-            gap: 0.5rem;
-            z-index: 10;
-        }
-
-        .carousel-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-
-        .carousel-btn:hover {
-            background: var(--accent);
-            transform: scale(1.1);
-        }
 
         /* Contact */
         .contact-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
@@ -495,10 +393,37 @@
             color: rgba(255,255,255,0.7);
             text-align: center;
             padding: 2rem;
-            margin-top: 3rem;
         }
 
         .footer a { color: rgba(255,255,255,0.9); }
+
+        /* Visitor Counter in Footer */
+        .visitor-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .visitor-counter .counter-icon {
+            font-size: 1rem;
+        }
+
+        .visitor-counter .counter-badge {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .visitor-counter .counter-badge img {
+            height: 22px;
+            vertical-align: middle;
+            border-radius: 3px;
+        }
 
         /* Back to Top */
         .back-to-top {
@@ -530,9 +455,8 @@
             .hero-news-slide { padding: 1.5rem; gap: 1rem; flex-direction: column; }
             .hero-news-date { min-width: 100%; }
             .section { padding: 3rem 1.5rem; }
+            .pi-profile { grid-template-columns: 1fr; }
             .grid-2, .grid-3 { grid-template-columns: 1fr; }
-            .news-carousel-slide { padding: 1.5rem; gap: 1rem; }
-            .carousel-controls { bottom: 0.5rem; right: 0.5rem; }
         }
     </style>
 </head>
@@ -602,189 +526,176 @@
     </section>
 
     <!-- About -->
-    <section id="about" class="section" style="background: white; margin-left: -2rem; margin-right: -2rem; padding-left: 2rem; padding-right: 2rem;">
-        <h2 class="section-title">About us</h2>
-        <div class="pi-profile">
-            <div class="pi-avatar">
-                <img src="images/gao.jpg" alt="Dr. Gui-Feng Gao" onerror="this.style.display='none'">
-                <span style="display:none;">高</span>
+    <div class="section-wrapper bg-white">
+        <section id="about" class="section">
+            <h2 class="section-title">About us</h2>
+            <div class="pi-profile">
+                <div class="pi-avatar">
+                    <img src="images/gao.jpg" alt="Dr. Gui-Feng Gao" onerror="this.style.display='none'">
+                    <span style="display:none;">高</span>
+                </div>
+                <div class="pi-info">
+                    <h3>Dr. Gui-Feng Gao (高贵锋)</h3>
+                    <div class="pi-title">Associate Research Fellow</div>
+                    <div class="pi-bio">
+                        Dr. Gui-Feng Gao received his Ph.D. in Ecology from Xiamen University in 2018. He completed his postdoctoral training at the Nanjing Institute of Soil Science, Chinese Academy of Sciences. His research focuses on soil microbiome ecology, microbial community assembly, and ecosystem functioning in coastal wetlands.
+                    </div>
+                    <div class="pi-stat">
+                        <div class="pi-stat-label">Field:</div>
+                        <div class="pi-stat-value">Microbial Ecology</div>
+                    </div>
+                    <div class="pi-stat">
+                        <div class="pi-stat-label">Education:</div>
+                        <div class="pi-stat-value">Ph.D. in Ecology (Xiamen University, 2018)</div>
+                    </div>
+                    <div class="pi-stat">
+                        <div class="pi-stat-label">Position:</div>
+                        <div class="pi-stat-value">Associate Research Fellow, Nanjing Institute of Soil Science, CAS</div>
+                    </div>
+                </div>
             </div>
-            <div class="pi-info">
-                <h3>Dr. Gui-Feng Gao (高贵锋)</h3>
-                <div class="pi-title">Associate Research Fellow</div>
-                <div class="pi-bio">
-                    Dr. Gui-Feng Gao received his Ph.D. in Ecology from Xiamen University in 2018. He completed his postdoctoral training at the Nanjing Institute of Soil Science, Chinese Academy of Sciences. His research focuses on soil microbiome ecology, microbial community assembly, and ecosystem functioning in coastal wetlands.
-                </div>
-                <div class="pi-stat">
-                    <div class="pi-stat-label">Field:</div>
-                    <div class="pi-stat-value">Microbial Ecology</div>
-                </div>
-                <div class="pi-stat">
-                    <div class="pi-stat-label">Education:</div>
-                    <div class="pi-stat-value">Ph.D. in Ecology (Xiamen University, 2018)</div>
-                </div>
-                <div class="pi-stat">
-                    <div class="pi-stat-label">Position:</div>
-                    <div class="pi-stat-value">Associate Research Fellow, Nanjing Institute of Soil Science, CAS</div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Research Focus -->
-    <section id="research" class="section">
-        <h2 class="section-title">Research Directions</h2>
-        <div class="research-areas">
-            <ol>
-                <li><strong>Soil Microbiome Biogeography & Driving Mechanisms</strong> - Understanding spatial patterns and environmental controls on microbial communities</li>
-                <li><strong>Soil Microbial Community Structure and Functional Evolution</strong> - Linking microbial composition to ecosystem functions and services</li>
-            </ol>
-        </div>
-    </section>
+    <div class="section-wrapper bg-light">
+        <section id="research" class="section">
+            <h2 class="section-title">Research Directions</h2>
+            <div class="research-areas">
+                <ol>
+                    <li><strong>Soil Microbiome Biogeography & Driving Mechanisms</strong> - Understanding spatial patterns and environmental controls on microbial communities</li>
+                    <li><strong>Soil Microbial Community Structure and Functional Evolution</strong> - Linking microbial composition to ecosystem functions and services</li>
+                </ol>
+            </div>
+        </section>
+    </div>
 
     <!-- Team -->
-    <section id="team" class="section" style="background: white; margin-left: -2rem; margin-right: -2rem; padding-left: 2rem; padding-right: 2rem;">
-        <h2 class="section-title">Research Team</h2>
-
-        <div class="grid grid-3">
-            <div class="card member-card">
-                <div class="avatar" style="background: linear-gradient(135deg, #8b6f47, #b89968);">
-                    <img src="images/li.jpg" alt="Ph.D. Student Li" onerror="this.style.display='none'">
-                    <span style="display:none;">李</span>
+    <div class="section-wrapper bg-white">
+        <section id="team" class="section">
+            <h2 class="section-title">Research Team</h2>
+            <div class="grid grid-3">
+                <div class="card member-card">
+                    <div class="avatar" style="background: linear-gradient(135deg, #8b6f47, #b89968);">
+                        <img src="images/li.jpg" alt="Ph.D. Student Li" onerror="this.style.display='none'">
+                        <span style="display:none;">李</span>
+                    </div>
+                    <h4>Ph.D. Student</h4>
+                    <p class="member-role">Research Focus: Microbial Diversity</p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">Microbial diversity analysis and community composition</p>
                 </div>
-                <h4>Ph.D. Student</h4>
-                <p class="member-role">Research Focus: Microbial Diversity</p>
-                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">Microbial diversity analysis and community composition</p>
-            </div>
-            <div class="card member-card">
-                <div class="avatar" style="background: linear-gradient(135deg, #5a8c4f, #7aac6f);">
-                    <img src="images/wang.jpg" alt="Ph.D. Student Wang" onerror="this.style.display='none'">
-                    <span style="display:none;">王</span>
+                <div class="card member-card">
+                    <div class="avatar" style="background: linear-gradient(135deg, #5a8c4f, #7aac6f);">
+                        <img src="images/wang.jpg" alt="Ph.D. Student Wang" onerror="this.style.display='none'">
+                        <span style="display:none;">王</span>
+                    </div>
+                    <h4>Ph.D. Student</h4>
+                    <p class="member-role">Research Focus: Community Assembly</p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">Microbial community assembly and environmental responses</p>
                 </div>
-                <h4>Ph.D. Student</h4>
-                <p class="member-role">Research Focus: Community Assembly</p>
-                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">Microbial community assembly and environmental responses</p>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Key Publications -->
-    <section id="publications" class="section">
-        <h2 class="section-title">Representative Publications</h2>
-        <p class="section-desc">Selected research accomplishments in peer-reviewed journals</p>
-        <div class="grid">
-            <div class="card pub-item">
-                <div class="pub-title">Expedited loss of soil biodiversity in blue carbon ecosystems caused by rising sea levels</div>
-                <div class="pub-authors">Gui-Feng Gao, Luyao Song, Yihui Zhang, Haiyan Chu*</div>
-                <div class="pub-venue">Soil Biology and Biochemistry</div>
-                <div class="pub-year">2024, 191: 109348</div>
-                <div class="pub-tags">
-                    <span class="tag tag-pdf">Blue Carbon</span>
-                    <span class="tag tag-code">Biodiversity</span>
+    <div class="section-wrapper bg-light">
+        <section id="publications" class="section">
+            <h2 class="section-title">Representative Publications</h2>
+            <p class="section-desc">Selected research accomplishments in peer-reviewed journals</p>
+            <div class="grid">
+                <div class="card pub-item">
+                    <div class="pub-title">Expedited loss of soil biodiversity in blue carbon ecosystems caused by rising sea levels</div>
+                    <div class="pub-authors">Gui-Feng Gao, Luyao Song, Yihui Zhang, Haiyan Chu*</div>
+                    <div class="pub-venue">Soil Biology and Biochemistry</div>
+                    <div class="pub-year">2024, 191: 109348</div>
+                </div>
+                <div class="card pub-item">
+                    <div class="pub-title">Continental-scale plant invasions reshuffle the soil microbiome of blue carbon ecosystems</div>
+                    <div class="pub-authors">Gui-Feng Gao, Huan Li, Yu Shi, Teng Yang, Chang-Hao Gao, and others</div>
+                    <div class="pub-venue">Global Change Biology</div>
+                    <div class="pub-year">2022, 28: 4423-4438</div>
+                </div>
+                <div class="card pub-item">
+                    <div class="pub-title">Increasing inundation frequencies enhance the stochastic process and network complexity of the soil archaeal community in coastal wetlands</div>
+                    <div class="pub-authors">Gui-Feng Gao, Dan Peng, Di Wu, Yihui Zhang, Haiyan Chu*</div>
+                    <div class="pub-venue">Applied and Environmental Microbiology</div>
+                    <div class="pub-year">2021, 87: e02560-20</div>
+                </div>
+                <div class="card pub-item">
+                    <div class="pub-title">Dramatic change of bacterial assembly process and co-occurrence pattern in Spartina alterniflora salt marsh along an inundation frequency gradient</div>
+                    <div class="pub-authors">Gui-Feng Gao, Dan Peng, Yihui Zhang, Yuntao Li, Kunkun Fan, and others</div>
+                    <div class="pub-venue">Science of the Total Environment</div>
+                    <div class="pub-year">2021, 755: 142546</div>
+                </div>
+                <div class="card pub-item">
+                    <div class="pub-title">Distinct community assembly processes of abundant and rare soil bacteria in coastal wetlands along an inundation gradient</div>
+                    <div class="pub-authors">Gui-Feng Gao, Dan Peng, Binu M. Tripathi, Yihui Zhang*, Haiyan Chu*</div>
+                    <div class="pub-venue">mSystems</div>
+                    <div class="pub-year">2020, 5: e01150-20</div>
+                </div>
+                <div class="card pub-item">
+                    <div class="pub-title">Soil microbial biogeography in a changing world: Recent advances and future perspectives</div>
+                    <div class="pub-authors">Haiyan Chu*, Gui-Feng Gao, Yuying Ma, Kunkun Fan, Manuel Delgado-Baquerizo*</div>
+                    <div class="pub-venue">mSystems</div>
+                    <div class="pub-year">2020, 5: e00803-19</div>
                 </div>
             </div>
-            <div class="card pub-item">
-                <div class="pub-title">Continental-scale plant invasions reshuffle the soil microbiome of blue carbon ecosystems</div>
-                <div class="pub-authors">Gui-Feng Gao, Huan Li, Yu Shi, Teng Yang, Chang-Hao Gao, and others</div>
-                <div class="pub-venue">Global Change Biology</div>
-                <div class="pub-year">2022, 28: 4423-4438</div>
-                <div class="pub-tags">
-                    <span class="tag tag-award">High Impact</span>
-                    <span class="tag tag-code">Microbiome</span>
-                </div>
-            </div>
-            <div class="card pub-item">
-                <div class="pub-title">Increasing inundation frequencies enhance the stochastic process and network complexity of the soil archaeal community in coastal wetlands</div>
-                <div class="pub-authors">Gui-Feng Gao, Dan Peng, Di Wu, Yihui Zhang, Haiyan Chu*</div>
-                <div class="pub-venue">Applied and Environmental Microbiology</div>
-                <div class="pub-year">2021, 87: e02560-20</div>
-                <div class="pub-tags">
-                    <span class="tag tag-pdf">Archaea</span>
-                    <span class="tag tag-code">Inundation</span>
-                </div>
-            </div>
-            <div class="card pub-item">
-                <div class="pub-title">Dramatic change of bacterial assembly process and co-occurrence pattern in Spartina alterniflora salt marsh along an inundation frequency gradient</div>
-                <div class="pub-authors">Gui-Feng Gao, Dan Peng, Yihui Zhang, Yuntao Li, Kunkun Fan, and others</div>
-                <div class="pub-venue">Science of the Total Environment</div>
-                <div class="pub-year">2021, 755: 142546</div>
-                <div class="pub-tags">
-                    <span class="tag tag-code">Salt Marsh</span>
-                    <span class="tag tag-pdf">Assembly</span>
-                </div>
-            </div>
-            <div class="card pub-item">
-                <div class="pub-title">Distinct community assembly processes of abundant and rare soil bacteria in coastal wetlands along an inundation gradient</div>
-                <div class="pub-authors">Gui-Feng Gao, Dan Peng, Binu M. Tripathi, Yihui Zhang*, Haiyan Chu*</div>
-                <div class="pub-venue">mSystems</div>
-                <div class="pub-year">2020, 5: e01150-20</div>
-                <div class="pub-tags">
-                    <span class="tag tag-award">Featured</span>
-                    <span class="tag tag-code">Community</span>
-                </div>
-            </div>
-            <div class="card pub-item">
-                <div class="pub-title">Soil microbial biogeography in a changing world: Recent advances and future perspectives</div>
-                <div class="pub-authors">Haiyan Chu*, Gui-Feng Gao, Yuying Ma, Kunkun Fan, Manuel Delgado-Baquerizo*</div>
-                <div class="pub-venue">mSystems</div>
-                <div class="pub-year">2020, 5: e00803-19</div>
-                <div class="pub-tags">
-                    <span class="tag tag-code">Review</span>
-                    <span class="tag tag-pdf">Biogeography</span>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Research Projects -->
-    <section id="projects" class="section" style="background: white; margin-left: -2rem; margin-right: -2rem; padding-left: 2rem; padding-right: 2rem;">
-        <h2 class="section-title">Research Projects</h2>
-        <p class="section-desc">Current and completed funded research projects</p>
-        
-        <h3 style="color: var(--primary); margin: 2rem 0 1rem 0; font-size: 1.3rem;">Principal Investigator</h3>
-        <div class="project-item">
-            <div class="project-title">National Key Research & Development Program</div>
-            <div class="project-details"><strong>Title:</strong> Biocontrol and Herbicide Degradation Remediation Technology for Soil-borne Diseases in Dryland Agriculture | <strong>Period:</strong> 2023-2027</div>
-        </div>
-        <div class="project-item">
-            <div class="project-title">National Natural Science Foundation - General Program</div>
-            <div class="project-details"><strong>Title:</strong> Spatio-temporal Distribution and Carbon Accumulation Mechanisms of Soil Carbon-fixing Microbiota in Invasive Spartina alterniflora Wetlands | <strong>Period:</strong> 2023-2027</div>
-        </div>
-        <div class="project-item">
-            <div class="project-title">National Natural Science Foundation - Young Scientist Program</div>
-            <div class="project-details"><strong>Title:</strong> Response Mechanisms of Soil Microbial Communities to Sea-level Rise in Typical Southern Coastal Wetlands | <strong>Period:</strong> 2021-2024</div>
-        </div>
-        <div class="project-item">
-            <div class="project-title">Jiangsu Province Postdoctoral Fellowship</div>
-            <div class="project-details"><strong>Title:</strong> Distribution and Driving Mechanisms of Soil Microbial Communities Under Spartina alterniflora Invasion | <strong>Period:</strong> 2020-2022</div>
-        </div>
+    <div class="section-wrapper bg-white">
+        <section id="projects" class="section">
+            <h2 class="section-title">Research Projects</h2>
+            <p class="section-desc">Current and completed funded research projects</p>
 
-        <h3 style="color: var(--primary); margin: 2rem 0 1rem 0; font-size: 1.3rem;">Co-Investigator</h3>
-        <div class="project-item">
-            <div class="project-title">National Key Research & Development Program</div>
-            <div class="project-details"><strong>Title:</strong> Microbiological Regulation and Yield Enhancement of Active Organic Matter in Dryland Soil | <strong>Period:</strong> 2022-2026</div>
-        </div>
-        <div class="project-item">
-            <div class="project-title">Chinese Academy of Sciences Strategic Priority Program Sub-project</div>
-            <div class="project-details"><strong>Title:</strong> Targeted Cultivation of Key Species for Soil Biological Network Health | <strong>Period:</strong> 2021-2026</div>
-        </div>
-        <div class="project-item">
-            <div class="project-title">National Agricultural Major Science & Technology Project Sub-task</div>
-            <div class="project-details"><strong>Title:</strong> Evaluation and Diagnosis of Soil Biological Health in Black Soil | <strong>Period:</strong> 2022-2026</div>
-        </div>
-        <div class="project-item">
-            <div class="project-title">National Natural Science Foundation - Key Program</div>
-            <div class="project-details"><strong>Title:</strong> Evolution and Conservation of Microbial Diversity in Typical Qinghai-Tibet Plateau Wetlands Under Climate Change | <strong>Period:</strong> 2019-2024</div>
-        </div>
-        <div class="project-item">
-            <div class="project-title">National Natural Science Foundation - Major Research Plan</div>
-            <div class="project-details"><strong>Title:</strong> Distribution and Function of Methane-oxidizing Microorganisms in Qinghai-Tibet Plateau Wetlands | <strong>Period:</strong> 2020-2022</div>
-        </div>
-    </section>
+            <h3 style="color: var(--primary); margin: 2rem 0 1rem 0; font-size: 1.3rem;">Principal Investigator</h3>
+            <div class="project-item">
+                <div class="project-title">National Key Research & Development Program</div>
+                <div class="project-details"><strong>Title:</strong> Biocontrol and Herbicide Degradation Remediation Technology for Soil-borne Diseases in Dryland Agriculture | <strong>Period:</strong> 2023-2027</div>
+            </div>
+            <div class="project-item">
+                <div class="project-title">National Natural Science Foundation - General Program</div>
+                <div class="project-details"><strong>Title:</strong> Spatio-temporal Distribution and Carbon Accumulation Mechanisms of Soil Carbon-fixing Microbiota in Invasive Spartina alterniflora Wetlands | <strong>Period:</strong> 2023-2027</div>
+            </div>
+            <div class="project-item">
+                <div class="project-title">National Natural Science Foundation - Young Scientist Program</div>
+                <div class="project-details"><strong>Title:</strong> Response Mechanisms of Soil Microbial Communities to Sea-level Rise in Typical Southern Coastal Wetlands | <strong>Period:</strong> 2021-2024</div>
+            </div>
+            <div class="project-item">
+                <div class="project-title">Jiangsu Province Postdoctoral Fellowship</div>
+                <div class="project-details"><strong>Title:</strong> Distribution and Driving Mechanisms of Soil Microbial Communities Under Spartina alterniflora Invasion | <strong>Period:</strong> 2020-2022</div>
+            </div>
+
+            <h3 style="color: var(--primary); margin: 2rem 0 1rem 0; font-size: 1.3rem;">Co-Investigator</h3>
+            <div class="project-item">
+                <div class="project-title">National Key Research & Development Program</div>
+                <div class="project-details"><strong>Title:</strong> Microbiological Regulation and Yield Enhancement of Active Organic Matter in Dryland Soil | <strong>Period:</strong> 2022-2026</div>
+            </div>
+            <div class="project-item">
+                <div class="project-title">Chinese Academy of Sciences Strategic Priority Program Sub-project</div>
+                <div class="project-details"><strong>Title:</strong> Targeted Cultivation of Key Species for Soil Biological Network Health | <strong>Period:</strong> 2021-2026</div>
+            </div>
+            <div class="project-item">
+                <div class="project-title">National Agricultural Major Science & Technology Project Sub-task</div>
+                <div class="project-details"><strong>Title:</strong> Evaluation and Diagnosis of Soil Biological Health in Black Soil | <strong>Period:</strong> 2022-2026</div>
+            </div>
+            <div class="project-item">
+                <div class="project-title">National Natural Science Foundation - Key Program</div>
+                <div class="project-details"><strong>Title:</strong> Evolution and Conservation of Microbial Diversity in Typical Qinghai-Tibet Plateau Wetlands Under Climate Change | <strong>Period:</strong> 2019-2024</div>
+            </div>
+            <div class="project-item">
+                <div class="project-title">National Natural Science Foundation - Major Research Plan</div>
+                <div class="project-details"><strong>Title:</strong> Distribution and Function of Methane-oxidizing Microorganisms in Qinghai-Tibet Plateau Wetlands | <strong>Period:</strong> 2020-2022</div>
+            </div>
+        </section>
+    </div>
 
     <!-- Contact -->
-    <section id="contact" class="section" style="background: white; margin-left: -2rem; margin-right: -2rem; padding-left: 2rem; padding-right: 2rem;">
+<div class="section-wrapper bg-light">
+    <section id="contact" class="section">
         <h2 class="section-title">Contact Us</h2>
+        <p class="section-desc">We welcome inquiries and collaboration opportunities</p>
         <div class="grid contact-grid">
             <div class="card">
                 <h3>Email</h3>
@@ -792,37 +703,45 @@
                     <div class="contact-icon">✉</div>
                     <div>
                         <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Primary Email</p>
-                        <p><a href="mailto:gaogf@issas.ac.cn">gaogf@issas.ac.cn</a></p>
+                        <p><a href="mailto:gfgao@issas.ac.cn">gfgao@issas.ac.cn</a></p>
                     </div>
                 </div>
             </div>
             <div class="card">
-                <h3>Affiliation</h3>
+                <h3>Phone</h3>
                 <div class="contact-item">
-                    <div class="contact-icon">🏢</div>
+                    <div class="contact-icon">📞</div>
                     <div>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Institution</p>
-                        <p>Nanjing Institute of Soil Science, Chinese Academy of Sciences</p>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Office Phone</p>
+                        <p><a href="tel:025-86881345">025-86881345</a></p>
                     </div>
                 </div>
             </div>
             <div class="card">
-                <h3>Location</h3>
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <div>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Address</p>
-                        <p>Nanjing, Jiangsu Province, China</p>
-                    </div>
-                </div>
-            </div>
+    <h3>Location</h3>
+    <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Address</p>
+            <p><a href="https://uri.amap.com/search?keyword=南京市江宁区创优路298号" target="_blank" rel="noopener noreferrer" style="color: var(--primary); border-bottom: 1px dashed var(--accent);">No.298 Chuangyou Road, Jiangning District, Nanjing, China</a></p>
+        </div>
+    </div>
+</div>
         </div>
     </section>
+</div>
 
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2026 Soil Microbiome Ecology Research Group | Nanjing Institute of Soil Science, Chinese Academy of Sciences</p>
         <p style="margin-top: 1rem; font-size: 0.9rem;"><a href="#">Privacy Policy</a> | <a href="#">Contact Information</a></p>
+        <div class="visitor-counter">
+            <span class="counter-icon">👥</span>
+            <span>Total Visitors:</span>
+            <span class="counter-badge">
+                <img src="https://api.visitorbadge.io/api/visitors?path=soil-microbiome-ecology-lab&label=&labelColor=%232d5016&countColor=%238b6f47&style=flat&labelStyle=none" alt="visitor count" id="visitorBadge">
+            </span>
+        </div>
     </footer>
 
     <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
@@ -870,20 +789,28 @@
         }
 
         // Auto-scroll hero carousel
-        let heroCarouselIndex = 0;
         setInterval(() => {
-            scrollHeroCarousel(1);
+            const carousel = document.getElementById('heroNewsCarousel');
+            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+            if (carousel.scrollLeft >= maxScroll - 10) {
+                carousel.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                scrollHeroCarousel(1);
+            }
         }, 5000);
 
-        // Carousel functionality for news section
-        function scrollCarousel(direction) {
-            const carousel = document.getElementById('newsCarousel');
-            const slideWidth = carousel.querySelector('.news-carousel-slide').offsetWidth;
-            carousel.scrollBy({
-                left: direction * slideWidth,
-                behavior: 'smooth'
-            });
-        }
+        // Visitor badge fallback - if image service fails, show local count
+        document.getElementById('visitorBadge').addEventListener('error', function() {
+            const STORAGE_KEY = 'site_visitor_count';
+            const VISITED_KEY = 'has_visited';
+            let count = parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
+            if (!sessionStorage.getItem(VISITED_KEY)) {
+                count++;
+                localStorage.setItem(STORAGE_KEY, count);
+                sessionStorage.setItem(VISITED_KEY, 'true');
+            }
+            this.parentElement.innerHTML = '<span style="background:rgba(255,255,255,0.15);padding:0.2rem 0.8rem;border-radius:50px;font-weight:600;color:rgba(255,255,255,0.9);letter-spacing:1px;">' + count.toLocaleString() + '</span>';
+        });
     </script>
 </body>
 </html>
