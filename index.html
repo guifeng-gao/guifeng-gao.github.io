@@ -65,7 +65,7 @@
             margin-top: 70px;
             background: linear-gradient(135deg, var(--primary) 0%, #4a7c3d 100%);
             color: white;
-            padding: 6rem 2rem;
+            padding: 3rem 2rem;
             text-align: center;
         }
 
@@ -77,6 +77,7 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 3rem;
         }
 
         .btn {
@@ -108,6 +109,90 @@
 
         .btn-outline:hover {
             background: rgba(255,255,255,0.1);
+        }
+
+        /* Hero News Section */
+        .hero-news-container {
+            position: relative;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-news-carousel {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .hero-news-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hero-news-slide {
+            flex: 0 0 100%;
+            min-width: 100%;
+            padding: 2.5rem;
+            scroll-snap-align: start;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            background: rgba(255,255,255,0.95);
+            color: var(--text-primary);
+        }
+
+        .hero-news-date {
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            padding: 1.2rem;
+            text-align: center;
+            flex-shrink: 0;
+            min-width: 90px;
+        }
+
+        .hero-news-date .day { font-size: 2rem; font-weight: 700; }
+        .hero-news-date .month { font-size: 0.8rem; text-transform: uppercase; opacity: 0.9; }
+
+        .hero-news-content h4 { color: var(--primary); margin-bottom: 0.8rem; font-size: 1.2rem; font-weight: 700; }
+        .hero-news-content p { color: var(--text-secondary); line-height: 1.6; }
+
+        .hero-carousel-controls {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .hero-carousel-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .hero-carousel-btn:hover {
+            background: var(--accent);
+            transform: scale(1.1);
         }
 
         /* Sections */
@@ -318,7 +403,6 @@
             scroll-behavior: smooth;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-            /* Hide scrollbar */
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
@@ -443,6 +527,8 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .hero h1 { font-size: 2rem; }
+            .hero-news-slide { padding: 1.5rem; gap: 1rem; flex-direction: column; }
+            .hero-news-date { min-width: 100%; }
             .section { padding: 3rem 1.5rem; }
             .grid-2, .grid-3 { grid-template-columns: 1fr; }
             .news-carousel-slide { padding: 1.5rem; gap: 1rem; }
@@ -474,6 +560,46 @@
         <div class="hero-buttons">
             <button class="btn btn-outline" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Join Us</button>
         </div>
+
+        <!-- News Carousel in Hero -->
+        <div class="hero-news-container">
+            <div class="hero-news-carousel" id="heroNewsCarousel">
+                <div class="hero-news-slide">
+                    <div class="hero-news-date">
+                        <div class="day">28</div>
+                        <div class="month">May</div>
+                    </div>
+                    <div class="hero-news-content">
+                        <h4>New Publication in Applied Soil Ecology</h4>
+                        <p>Our latest research on soil microbe-driven nutrient cycling has been formally published, revealing new insights into coastal wetland ecosystem functioning and carbon storage mechanisms.</p>
+                    </div>
+                </div>
+                <div class="hero-news-slide">
+                    <div class="hero-news-date">
+                        <div class="day">15</div>
+                        <div class="month">May</div>
+                    </div>
+                    <div class="hero-news-content">
+                        <h4>Graduate Student Recruitment 2026</h4>
+                        <p>We are actively recruiting Ph.D. and Master's students for the 2026 academic year. Prospective students interested in soil ecology, microbiology, and environmental science are encouraged to apply.</p>
+                    </div>
+                </div>
+                <div class="hero-news-slide">
+                    <div class="hero-news-date">
+                        <div class="day">01</div>
+                        <div class="month">May</div>
+                    </div>
+                    <div class="hero-news-content">
+                        <h4>Conference Presentation Accepted</h4>
+                        <p>Our research team has been invited to present three oral presentations at the International Soil Science Society conference in Beijing, highlighting recent findings on microbial biogeography.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-carousel-controls">
+                <button class="hero-carousel-btn" onclick="scrollHeroCarousel(-1)">❮</button>
+                <button class="hero-carousel-btn" onclick="scrollHeroCarousel(1)">❯</button>
+            </div>
+        </div>
     </section>
 
     <!-- About -->
@@ -488,7 +614,7 @@
                 <h3>Dr. Gui-Feng Gao (高贵锋)</h3>
                 <div class="pi-title">Associate Research Fellow</div>
                 <div class="pi-bio">
-                    Dr. Gui-Feng Gao received his Ph.D. in Ecology from Xiamen University in 2018. He completed his postdoctoral training at the Nanjing Institute of Soil Science, Chinese Academy of Sciences. His research focuses on soil microbiome ecology, microbial community assembly, and ecosystem functions in coastal wetlands.
+                    Dr. Gui-Feng Gao received his Ph.D. in Ecology from Xiamen University in 2018. He completed his postdoctoral training at the Nanjing Institute of Soil Science, Chinese Academy of Sciences. His research focuses on soil microbiome ecology, microbial community assembly, and ecosystem functioning in coastal wetlands.
                 </div>
                 <div class="pi-stat">
                     <div class="pi-stat-label">Field:</div>
@@ -629,7 +755,7 @@
         <h3 style="color: var(--primary); margin: 2rem 0 1rem 0; font-size: 1.3rem;">Principal Investigator</h3>
         <div class="project-item">
             <div class="project-title">National Key Research & Development Program</div>
-            <div class="project-details"><strong>Title:</strong> Biocontrol and Herbicide Degradation Remediation Technology for Soil-borne Diseases in Dryland Agriculture | <strong>Period:</strong> 2022-2026</div>
+            <div class="project-details"><strong>Title:</strong> Biocontrol and Herbicide Degradation Remediation Technology for Soil-borne Diseases in Dryland Agriculture | <strong>Period:</strong> 2023-2027</div>
         </div>
         <div class="project-item">
             <div class="project-title">National Natural Science Foundation - General Program</div>
@@ -637,7 +763,7 @@
         </div>
         <div class="project-item">
             <div class="project-title">National Natural Science Foundation - Young Scientist Program</div>
-            <div class="project-details"><strong>Title:</strong> Response Mechanisms of Soil Microbial Communities to Sea-level Rise in Typical Southern Coastal Wetlands | <strong>Period:</strong> 2020-2023</div>
+            <div class="project-details"><strong>Title:</strong> Response Mechanisms of Soil Microbial Communities to Sea-level Rise in Typical Southern Coastal Wetlands | <strong>Period:</strong> 2021-2024</div>
         </div>
         <div class="project-item">
             <div class="project-title">Jiangsu Province Postdoctoral Fellowship</div>
@@ -659,55 +785,11 @@
         </div>
         <div class="project-item">
             <div class="project-title">National Natural Science Foundation - Key Program</div>
-            <div class="project-details"><strong>Title:</strong> Evolution and Conservation of Microbial Diversity in Typical Qinghai-Tibet Plateau Wetlands Under Climate Change | <strong>Period:</strong> 2021-2026</div>
+            <div class="project-details"><strong>Title:</strong> Evolution and Conservation of Microbial Diversity in Typical Qinghai-Tibet Plateau Wetlands Under Climate Change | <strong>Period:</strong> 2019-2024</div>
         </div>
         <div class="project-item">
             <div class="project-title">National Natural Science Foundation - Major Research Plan</div>
             <div class="project-details"><strong>Title:</strong> Distribution and Function of Methane-oxidizing Microorganisms in Qinghai-Tibet Plateau Wetlands | <strong>Period:</strong> 2020-2022</div>
-        </div>
-    </section>
-
-    <!-- News Carousel -->
-    <section id="news" class="section">
-        <h2 class="section-title">Recent News & Updates</h2>
-        <p class="section-desc">Latest research progress and laboratory activities</p>
-        <div class="news-carousel-container">
-            <div class="news-carousel" id="newsCarousel">
-                <div class="news-carousel-slide">
-                    <div class="news-carousel-date">
-                        <div class="day">28</div>
-                        <div class="month">May</div>
-                    </div>
-                    <div class="news-carousel-content">
-                        <h4>New Publication in Applied Soil Ecology</h4>
-                        <p>Our latest research on soil microbe-driven nutrient cycling has been formally published, revealing new insights into coastal wetland ecosystem functioning and carbon storage mechanisms in blue carbon ecosystems.</p>
-                    </div>
-                </div>
-                <div class="news-carousel-slide">
-                    <div class="news-carousel-date">
-                        <div class="day">15</div>
-                        <div class="month">May</div>
-                    </div>
-                    <div class="news-carousel-content">
-                        <h4>Graduate Student Recruitment 2026</h4>
-                        <p>We are actively recruiting Ph.D. and Master's students for the 2026 academic year. Prospective students interested in soil ecology, microbiology, and environmental science are welcome to join our growing research group.</p>
-                    </div>
-                </div>
-                <div class="news-carousel-slide">
-                    <div class="news-carousel-date">
-                        <div class="day">01</div>
-                        <div class="month">May</div>
-                    </div>
-                    <div class="news-carousel-content">
-                        <h4>Conference Presentation Accepted</h4>
-                        <p>Our research team has been invited to present three oral presentations at the International Soil Science Society conference in Beijing, highlighting recent findings on microbial biogeography.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-controls">
-                <button class="carousel-btn" onclick="scrollCarousel(-1)">❮</button>
-                <button class="carousel-btn" onclick="scrollCarousel(1)">❯</button>
-            </div>
         </div>
     </section>
 
@@ -720,7 +802,7 @@
                 <div class="contact-item">
                     <div class="contact-icon">✉</div>
                     <div>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Primary Email</p>
                         <p><a href="mailto:gaogf@issas.ac.cn">gaogf@issas.ac.cn</a></p>
                     </div>
                 </div>
@@ -730,7 +812,7 @@
                 <div class="contact-item">
                     <div class="contact-icon">🏢</div>
                     <div>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Institution</p>
                         <p>Nanjing Institute of Soil Science, Chinese Academy of Sciences</p>
                     </div>
                 </div>
@@ -740,7 +822,7 @@
                 <div class="contact-item">
                     <div class="contact-icon">📍</div>
                     <div>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary);
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Address</p>
                         <p>Nanjing, Jiangsu Province, China</p>
                     </div>
                 </div>
@@ -788,7 +870,23 @@
             });
         }
 
-        // Carousel functionality
+        // Hero Carousel functionality
+        function scrollHeroCarousel(direction) {
+            const carousel = document.getElementById('heroNewsCarousel');
+            const slideWidth = carousel.querySelector('.hero-news-slide').offsetWidth;
+            carousel.scrollBy({
+                left: direction * slideWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        // Auto-scroll hero carousel
+        let heroCarouselIndex = 0;
+        setInterval(() => {
+            scrollHeroCarousel(1);
+        }, 5000);
+
+        // Carousel functionality for news section
         function scrollCarousel(direction) {
             const carousel = document.getElementById('newsCarousel');
             const slideWidth = carousel.querySelector('.news-carousel-slide').offsetWidth;
@@ -797,12 +895,6 @@
                 behavior: 'smooth'
             });
         }
-
-        // Optional: Auto-scroll carousel (uncomment to enable)
-        // let carouselIndex = 0;
-        // setInterval(() => {
-        //     scrollCarousel(1);
-        // }, 5000);
     </script>
 </body>
 </html>
