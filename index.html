@@ -47,13 +47,40 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            height: 80px;
         }
 
         .logo {
             font-size: 1.2rem;
             font-weight: 700;
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: 55px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-text .logo-main {
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        .logo-text .logo-sub {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 500;
         }
 
         .nav-links { display: flex; gap: 2rem; }
@@ -62,7 +89,7 @@
 
         /* Hero */
         .hero {
-            margin-top: 70px;
+            margin-top: 80px;
             background: linear-gradient(135deg, var(--primary) 0%, #4a7c3d 100%);
             color: white;
             padding: 3rem 2rem;
@@ -451,6 +478,11 @@
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links { display: none; }
+            .nav-inner { height: 70px; }
+            .logo-img { height: 42px; width: 42px; }
+            .logo-text .logo-main { font-size: 0.9rem; }
+            .logo-text .logo-sub { font-size: 0.65rem; }
+            .hero { margin-top: 70px; }
             .hero h1 { font-size: 2rem; }
             .hero-news-slide { padding: 1.5rem; gap: 1rem; flex-direction: column; }
             .hero-news-date { min-width: 100%; }
@@ -464,7 +496,13 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-inner">
-            <div class="logo">Soil Microbiome <span style="color: var(--accent);">Ecology Lab</span></div>
+            <div class="logo">
+                <img src="images/isscas-logo.png" alt="ISSCAS Logo" class="logo-img" onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <span class="logo-main">Soil Microbiome <span style="color: var(--accent);">Ecology Lab</span></span>
+                    <span class="logo-sub">Institute of Soil Science, CAS</span>
+                </div>
+            </div>
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#research">Research</a>
@@ -678,44 +716,44 @@
     </div>
 
     <!-- Contact -->
-<div class="section-wrapper bg-light">
-    <section id="contact" class="section">
-        <h2 class="section-title">Contact Us</h2>
-        <p class="section-desc">We welcome inquiries and collaboration opportunities</p>
-        <div class="grid contact-grid">
-            <div class="card">
-                <h3>Email</h3>
-                <div class="contact-item">
-                    <div class="contact-icon">✉</div>
-                    <div>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Primary Email</p>
-                        <p><a href="mailto:gfgao@issas.ac.cn">gfgao@issas.ac.cn</a></p>
+    <div class="section-wrapper bg-light">
+        <section id="contact" class="section">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-desc">We welcome inquiries and collaboration opportunities</p>
+            <div class="grid contact-grid">
+                <div class="card">
+                    <h3>Email</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉</div>
+                        <div>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Primary Email</p>
+                            <p><a href="mailto:gfgao@issas.ac.cn">gfgao@issas.ac.cn</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Phone</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Office Phone</p>
+                            <p><a href="tel:025-86881345">025-86881345</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Location</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Address</p>
+                            <p><a href="https://uri.amap.com/search?keyword=南京市江宁区创优路298号" target="_blank" rel="noopener noreferrer" style="color: var(--primary); border-bottom: 1px dashed var(--accent);">No.298 Chuangyou Road, Jiangning District, Nanjing, China</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <h3>Phone</h3>
-                <div class="contact-item">
-                    <div class="contact-icon">📞</div>
-                    <div>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Office Phone</p>
-                        <p><a href="tel:025-86881345">025-86881345</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-    <h3>Location</h3>
-    <div class="contact-item">
-        <div class="contact-icon">📍</div>
-        <div>
-            <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Address</p>
-            <p><a href="https://uri.amap.com/search?keyword=南京市江宁区创优路298号" target="_blank" rel="noopener noreferrer" style="color: var(--primary); border-bottom: 1px dashed var(--accent);">No.298 Chuangyou Road, Jiangning District, Nanjing, China</a></p>
-        </div>
+        </section>
     </div>
-</div>
-        </div>
-    </section>
-</div>
 
     <!-- Footer -->
     <footer class="footer">
