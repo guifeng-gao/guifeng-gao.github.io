@@ -176,7 +176,7 @@ def render():
         }}
         .hero::before {{
             content: ''; position: absolute; inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background: url(images/hero-bg.svg) center/cover no-repeat;
             opacity: .5;
         }}
         .hero-content {{ max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; text-align: center; }}
@@ -576,6 +576,68 @@ def render():
 </script>
 </body>
 </html>'''
+
+
+    # Add floating microbe decorations (post-processing to avoid f-string issues)
+    microbe_css = """        /* Floating microbe animations */
+        @keyframes float1 { 0%\,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-12px) rotate(5deg); } }
+        @keyframes float2 { 0%\,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(10px) rotate(-5deg); } }
+        @keyframes float3 { 0%\,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-8px) scale(1.05); } }
+        .hero-microbe { position: absolute; z-index: 1; pointer-events: none; }
+        .hero-microbe-1 { top: 15%; left: 8%; width: 60px; height: 60px; animation: float1 6s ease-in-out infinite; }
+        .hero-microbe-2 { top: 60%; left: 12%; width: 40px; height: 40px; animation: float2 5s ease-in-out infinite; }
+        .hero-microbe-3 { top: 25%; right: 10%; width: 50px; height: 50px; animation: float3 7s ease-in-out infinite; }
+        .hero-microbe-4 { top: 70%; right: 15%; width: 35px; height: 35px; animation: float1 4.5s ease-in-out infinite; }
+        .hero-microbe-5 { top: 45%; left: 3%; width: 30px; height: 30px; animation: float2 5.5s ease-in-out infinite; }
+        .hero-microbe-6 { top: 40%; right: 5%; width: 45px; height: 45px; animation: float3 6.5s ease-in-out infinite; }
+"""
+    html = html.replace('@media (max-width:', microbe_css + '@media (max-width:')
+
+    microbe_html = """        <!-- Floating microbial decorations -->
+        <div class="hero-microbe hero-microbe-1">
+            <svg viewBox="0 0 60 60" fill="none">
+                <circle cx="30" cy="30" r="20" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+                <circle cx="22" cy="22" r="5" fill="rgba(255,255,255,0.20)"/>
+                <circle cx="38" cy="35" r="4" fill="rgba(255,255,255,0.15)"/>
+                <circle cx="28" cy="38" r="3" fill="rgba(255,255,255,0.12)"/>
+            </svg>
+        </div>
+        <div class="hero-microbe hero-microbe-2">
+            <svg viewBox="0 0 40 40" fill="none">
+                <rect x="5" y="12" width="30" height="16" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.20)" stroke-width="1.2"/>
+                <circle cx="13" cy="20" r="3" fill="rgba(255,255,255,0.18)"/>
+                <circle cx="27" cy="20" r="3" fill="rgba(255,255,255,0.18)"/>
+            </svg>
+        </div>
+        <div class="hero-microbe hero-microbe-3">
+            <svg viewBox="0 0 50 50" fill="none">
+                <circle cx="25" cy="25" r="18" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+                <circle cx="18" cy="18" r="4" fill="rgba(255,255,255,0.18)"/>
+                <circle cx="32" cy="28" r="3" fill="rgba(255,255,255,0.12)"/>
+                <circle cx="22" cy="32" r="2.5" fill="rgba(255,255,255,0.10)"/>
+            </svg>
+        </div>
+        <div class="hero-microbe hero-microbe-4">
+            <svg viewBox="0 0 35 35" fill="none">
+                <circle cx="17" cy="17" r="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"/>
+                <circle cx="14" cy="14" r="3" fill="rgba(255,255,255,0.15)"/>
+                <circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.10)"/>
+            </svg>
+        </div>
+        <div class="hero-microbe hero-microbe-5">
+            <svg viewBox="0 0 30 30" fill="none">
+                <circle cx="15" cy="10" r="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.20)" stroke-width="1.2"/>
+                <circle cx="15" cy="22" r="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            </svg>
+        </div>
+        <div class="hero-microbe hero-microbe-6">
+            <svg viewBox="0 0 45 45" fill="none">
+                <path d="M8,22 C8,12 18,12 18,22 C18,32 28,32 28,22 C28,12 38,12 38,22" stroke="rgba(255,255,255,0.20)" stroke-width="2" fill="none"/>
+            </svg>
+        </div>
+"""
+    html = html.replace('        </div>\n    </div>\n</section>',
+                       '        </div>\n' + microbe_html + '    </div>\n</section>')
 
     OUT.write_text(html, encoding="utf-8")
     print(f"✔ Site built: {OUT}")
