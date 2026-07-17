@@ -1,0 +1,51 @@
+{
+  "pi": [
+    {
+      "title": "National Key Research & Development Program",
+      "detail": "Biocontrol of Soil-Borne Diseases and Remediation Technology for Herbicide Degradation in Dryland Soils",
+      "period": "2024-2027"
+    },
+    {
+      "title": "NSFC General Program",
+      "detail": "Spatiotemporal distribution of soil carbon-fixing microbes and their carbon enhancement mechanism in China's coastal wetlands under Spartina alterniflora invasion",
+      "period": "2025-2028"
+    },
+    {
+      "title": "NSFC Young Scientist Program",
+      "detail": "Response mechanism of soil microbial communities to sea level rise in typical coastal wetlands in southern China",
+      "period": "2020-2022"
+    },
+    {
+      "title": "Jiangsu Province Postdoctoral Fellowship",
+      "detail": "Distribution and Driving Mechanisms of Soil Microbial Communities Under Spartina alterniflora Invasion",
+      "period": "2019-2020"
+    }
+  ],
+  "coi": [
+    {
+      "title": "National Key Research & Development Program",
+      "detail": "Microbiological Regulation and Yield Enhancement of Active Organic Matter in Dryland Soil",
+      "period": "2022-2026"
+    },
+    {
+      "title": "CAS Strategic Priority Program Sub-project",
+      "detail": "Targeted Cultivation of Key Species for Soil Biological Network Health",
+      "period": "2021-2026"
+    },
+    {
+      "title": "National Agricultural Major Science & Technology Sub-task",
+      "detail": "Evaluation and Diagnosis of Soil Biological Health in Black Soil",
+      "period": "2022-2026"
+    },
+    {
+      "title": "NSFC Key Program",
+      "detail": "Evolution and Conservation of Microbial Diversity in Typical Qinghai-Tibet Plateau Wetlands Under Climate Change",
+      "period": "2019-2024"
+    },
+    {
+      "title": "NSFC Major Research Plan",
+      "detail": "Distribution and Function of Methane-oxidizing Microorganisms in Qinghai-Tibet Plateau Wetlands",
+      "period": "2020-2022"
+    }
+  ]
+}

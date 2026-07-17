@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Master Student",
+    "role": "Research Focus: Microbial Diversity in Coastal Wetlands",
+    "focus": "Microbial diversity analysis and community composition",
+    "photo": "images/xin.jpg",
+    "color": "#8b6f47,#b89968"
+  },
+  {
+    "name": "Master Student",
+    "role": "Research Focus: Pathogen Biogeography",
+    "focus": "Microbial distribution and environmental responses",
+    "photo": "images/su.jpg",
+    "color": "#5a8c4f,#7aac6f"
+  }
+]

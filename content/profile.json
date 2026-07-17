@@ -1,0 +1,12 @@
+{
+  "name": "Dr. Gui-Feng Gao",
+  "nameCn": "高贵锋",
+  "title": "Associate Research Fellow",
+  "bio": "Dr. Gui-Feng Gao received his Ph.D. in Ecology from Xiamen University in 2018. He completed his postdoctoral training at the Institute of Soil Science, Chinese Academy of Sciences. His research focuses on soil microbiome ecology, microbial community assembly, and ecosystem functioning.",
+  "photo": "images/gao.jpg",
+  "meta": [
+    { "label": "Field", "value": "Microbial Ecology" },
+    { "label": "Education", "value": "Ph.D. in Ecology (Xiamen University, 2018)" },
+    { "label": "Position", "value": "Associate Research Fellow, Institute of Soil Science, CAS" }
+  ]
+}
