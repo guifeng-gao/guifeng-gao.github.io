@@ -3,838 +3,624 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soil Microbiome Ecology Research Group</title>
+    <title>Soil Microbiome Ecology Lab | Institute of Soil Science, CAS</title>
     <style>
         :root {
-            --primary: #2d5016;
-            --accent: #8b6f47;
-            --text-primary: #2c3e50;
-            --text-secondary: #6c7a89;
-            --bg-light: #faf8f3;
-            --border: #e0e6ed;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-            --shadow-lg: 0 12px 24px rgba(0,0,0,0.12);
+            --primary: #1a3c34;
+            --primary-light: #2d6a4f;
+            --primary-lighter: #95b46a;
+            --accent: #c4a35a;
+            --text: #1e2930;
+            --text-muted: #5c6c6b;
+            --bg: #f6f7f5;
+            --white: #ffffff;
+            --border: #e2e8e0;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+            --shadow-lg: 0 12px 28px rgba(0,0,0,0.08);
+            --radius: 6px;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-            color: var(--text-primary);
-            background: var(--bg-light);
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
         }
-
-        a { color: var(--primary); text-decoration: none; transition: all 0.3s; }
+        a { color: var(--primary-light); text-decoration: none; transition: color .25s; }
         a:hover { color: var(--accent); }
 
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: white;
+        /* Nav */
+        .nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(255,255,255,.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
         }
-
         .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
+            max-width: 1200px; margin: 0 auto; padding: 0 24px;
+            display: flex; justify-content: space-between; align-items: center;
+            height: 72px;
         }
-
-        .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
+        .nav-logo {
+            display: flex; align-items: center; gap: 12px;
+            font-weight: 700; font-size: 1.05rem; color: var(--primary);
         }
-
-        .logo-img {
-            height: 55px;
-            width: 55px;
-            object-fit: contain;
-            flex-shrink: 0;
+        .nav-logo img { height: 44px; width: 44px; object-fit: contain; flex-shrink: 0; }
+        .nav-logo-sub { font-size: .7rem; color: var(--text-muted); font-weight: 500; margin-top: 1px; }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a {
+            font-size: .9rem; color: var(--text-muted); font-weight: 500;
+            position: relative; padding: 4px 0;
         }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 2px; background: var(--primary-light);
+            transition: width .3s; border-radius: 2px;
         }
-
-        .logo-text .logo-main {
-            font-size: 1.1rem;
-            color: var(--primary);
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-toggle {
+            display: none; flex-direction: column; gap: 5px; cursor: pointer;
+            background: none; border: none; padding: 4px;
         }
-
-        .logo-text .logo-sub {
-            font-size: 0.75rem;
-            color: var(--accent);
-            font-weight: 500;
+        .nav-toggle span {
+            display: block; width: 24px; height: 2px;
+            background: var(--primary); border-radius: 2px;
+            transition: all .3s;
         }
-
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { font-size: 0.95rem; color: var(--text-secondary); }
-        .nav-links a:hover { color: var(--accent); }
 
         /* Hero */
         .hero {
-            margin-top: 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, #4a7c3d 100%);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
+            position: relative; margin-top: 72px;
+            background: linear-gradient(160deg, var(--primary) 0%, #1b5e4a 40%, #2d6a4f 100%);
+            color: var(--white); padding: 80px 24px 60px; overflow: hidden;
         }
-
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 800; }
-        .hero .subtitle { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: .5;
         }
-
+        .hero-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; text-align: center; }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 12px; }
+        .hero .sub { font-size: 1.15rem; opacity: .85; margin-bottom: 32px; font-weight: 400; }
+        .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
         .btn {
-            padding: 0.8rem 2rem;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 28px; border-radius: var(--radius);
+            font-weight: 600; font-size: .92rem; cursor: pointer;
+            transition: all .25s; border: none;
         }
+        .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.6); }
+        .btn-outline:hover { background: rgba(255,255,255,.1); border-color: var(--white); }
 
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
+        /* Hero news */
+        .hero-news {
+            max-width: 860px; margin: 0 auto;
+            background: rgba(255,255,255,.08); border-radius: var(--radius);
+            backdrop-filter: blur(4px); overflow: hidden;
         }
-
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.1);
+        .hero-news-inner {
+            display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+            -ms-overflow-style: none; scrollbar-width: none;
         }
-
-        /* Hero News Section */
-        .hero-news-container {
-            position: relative;
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px;
-            padding: 0;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-            max-width: 1000px;
-            margin: 0 auto;
+        .hero-news-inner::-webkit-scrollbar { display: none; }
+        .hero-news-item {
+            flex: 0 0 100%; scroll-snap-align: start;
+            padding: 24px 32px; display: flex; gap: 20px; align-items: flex-start;
+            background: rgba(255,255,255,.92); color: var(--text);
+            text-align: left;
         }
-
-        .hero-news-carousel {
-            display: flex;
-            gap: 0;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .hero-news-carousel::-webkit-scrollbar {
-            display: none;
-        }
-
-        .hero-news-slide {
-            flex: 0 0 100%;
-            min-width: 100%;
-            padding: 2.5rem;
-            scroll-snap-align: start;
-            display: flex;
-            gap: 2rem;
-            align-items: flex-start;
-            background: rgba(255,255,255,0.95);
-            color: var(--text-primary);
-        }
-
         .hero-news-date {
-            background: var(--primary);
-            color: white;
-            border-radius: 6px;
-            padding: 1.2rem;
-            text-align: center;
-            flex-shrink: 0;
-            min-width: 90px;
+            flex-shrink: 0; background: var(--primary-light); color: var(--white);
+            border-radius: var(--radius); padding: 12px 16px; text-align: center; min-width: 80px;
         }
-
-        .hero-news-date .day { font-size: 2rem; font-weight: 700; }
-        .hero-news-date .month { font-size: 0.8rem; text-transform: uppercase; opacity: 0.9; }
-
-        .hero-news-content h4 { color: var(--primary); margin-bottom: 0.8rem; font-size: 1.2rem; font-weight: 700; }
-        .hero-news-content p { color: var(--text-secondary); line-height: 1.6; }
-
-        .hero-carousel-controls {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            display: flex;
-            gap: 0.5rem;
-            z-index: 10;
+        .hero-news-date .d { font-size: 1.6rem; font-weight: 700; line-height: 1.2; }
+        .hero-news-date .m { font-size: .7rem; text-transform: uppercase; opacity: .85; }
+        .hero-news-body h4 { color: var(--primary); margin-bottom: 6px; font-size: 1.05rem; }
+        .hero-news-body p { color: var(--text-muted); font-size: .92rem; }
+        .hero-news-ctrl {
+            display: flex; gap: 8px; justify-content: flex-end; padding: 12px 16px;
         }
-
-        .hero-carousel-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
+        .hero-news-ctrl button {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: var(--primary-light); color: var(--white);
+            border: none; cursor: pointer; transition: all .2s;
+            display: flex; align-items: center; justify-content: center;
+            font-size: .85rem;
         }
+        .hero-news-ctrl button:hover { background: var(--accent); transform: scale(1.05); }
 
-        .hero-carousel-btn:hover {
-            background: var(--accent);
-            transform: scale(1.1);
+        /* Sections */
+        .section { padding: 80px 24px; }
+        .section-alt { background: var(--white); }
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-label {
+            display: inline-block; font-size: .75rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: .06em; color: var(--primary-lighter); margin-bottom: 8px;
         }
-
-        /* Section Wrapper - Full Width Background */
-        .section-wrapper {
-            width: 100%;
-        }
-
-        .section-wrapper.bg-white {
-            background: white;
-        }
-
-        .section-wrapper.bg-light {
-            background: var(--bg-light);
-        }
-
-        /* Section Content - Centered */
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
         .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
+            font-size: 1.8rem; font-weight: 700; color: var(--primary);
+            margin-bottom: 12px;
         }
-
         .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 2px;
+            content: ''; display: block; width: 44px; height: 3px;
+            background: var(--accent); border-radius: 2px; margin-top: 12px;
         }
+        .section-desc { color: var(--text-muted); margin-top: 16px; margin-bottom: 40px; max-width: 720px; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        .section-desc {
-            color: var(--text-secondary);
-            margin-top: 2rem;
-            margin-bottom: 3rem;
-            font-size: 1.05rem;
-        }
-
-        /* Grid System */
-        .grid { display: grid; gap: 1.5rem; }
-        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-        .grid-3 { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+        /* Grid */
+        .grid { display: grid; gap: 24px; }
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+        .grid-1 { grid-template-columns: 1fr; }
 
         /* Card */
         .card {
-            background: white;
-            border-radius: 8px;
-            padding: 2rem;
+            background: var(--white); border-radius: var(--radius);
             border: 1px solid var(--border);
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s;
+            padding: 28px; transition: all .3s;
         }
+        .section-alt .card { background: var(--bg); }
+        .card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+        .card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.05rem; }
+        .card p { color: var(--text-muted); font-size: .92rem; }
 
-        .card:hover {
-            transform: translateY(-4px);
+        /* Profile */
+        .profile {
+            display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start;
+        }
+        .profile-img {
+            width: 100%; aspect-ratio: 1; border-radius: var(--radius);
+            overflow: hidden; background: var(--primary-light);
             box-shadow: var(--shadow-lg);
         }
+        .profile-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .profile h3 { font-size: 1.4rem; color: var(--primary); margin-bottom: 4px; }
+        .profile-role { color: var(--accent); font-weight: 600; font-size: 1rem; margin-bottom: 16px; }
+        .profile-bio { color: var(--text-muted); margin-bottom: 20px; }
+        .profile-meta { display: grid; gap: 8px; }
+        .profile-meta-row { display: flex; gap: 12px; }
+        .profile-meta-label { color: var(--text-muted); min-width: 100px; font-size: .9rem; }
+        .profile-meta-val { color: var(--text); font-weight: 500; font-size: .9rem; }
 
-        .card h3 { color: var(--primary); margin-bottom: 1rem; }
-        .card p { color: var(--text-secondary); }
-
-        /* PI Profile */
-        .pi-profile {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 3rem;
-            align-items: start;
+        /* Research list */
+        .research-list { display: grid; gap: 16px; margin-top: 8px; }
+        .research-item {
+            padding: 20px 24px; background: var(--white); border-radius: var(--radius);
+            border: 1px solid var(--border); border-left: 4px solid var(--primary-light);
         }
-
-        .pi-avatar {
-            width: 100%;
-            aspect-ratio: 1;
-            border-radius: 8px;
-            background: linear-gradient(135deg, var(--primary) 0%, #4a7c3d 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            color: white;
-            font-weight: 700;
-            box-shadow: var(--shadow-lg);
-            object-fit: cover;
-        }
-
-        .pi-avatar img {
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        .pi-info h3 { color: var(--primary); font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .pi-title { color: var(--accent); font-weight: 600; font-size: 1.1rem; margin-bottom: 1.5rem; }
-        .pi-bio { color: var(--text-secondary); margin-bottom: 1.5rem; }
-        .pi-stat { display: flex; gap: 1rem; margin-bottom: 1rem; }
-        .pi-stat-label { color: var(--text-secondary); min-width: 100px; }
-        .pi-stat-value { color: var(--primary); font-weight: 600; }
-
-        /* Research Areas */
-        .research-areas {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            margin-top: 2rem;
-        }
-
-        .research-areas h4 { color: var(--primary); margin-bottom: 1rem; }
-        .research-areas ol { margin-left: 1.5rem; color: var(--text-secondary); }
-        .research-areas li { margin-bottom: 0.5rem; }
+        .section-alt .research-item { background: var(--bg); }
+        .research-item strong { color: var(--primary); }
+        .research-item p { color: var(--text-muted); margin-top: 4px; font-size: .92rem; }
 
         /* Team */
-        .member-card {
-            text-align: center;
-            padding: 1.5rem;
+        .team-card { text-align: center; padding: 24px 20px; }
+        .team-avatar {
+            width: 96px; height: 96px; border-radius: 50%; margin: 0 auto 16px;
+            overflow: hidden; object-fit: cover; display: block;
         }
-
-        .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 2rem;
-            object-fit: cover;
-            overflow: hidden;
-        }
-
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .member-card h4 { color: var(--primary); margin-bottom: 0.5rem; }
-        .member-role { color: var(--text-secondary); font-size: 0.9rem; }
+        .team-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .team-card h4 { color: var(--primary); margin-bottom: 4px; }
+        .team-role { color: var(--text-muted); font-size: .85rem; margin-bottom: 8px; }
+        .team-focus { color: var(--text-muted); font-size: .82rem; }
 
         /* Publications */
         .pub-item {
-            padding: 1.5rem;
-            border-left: 4px solid transparent;
-            background: white;
-            border-radius: 6px;
-            border: 1px solid var(--border);
+            padding: 20px 24px; border-left: 4px solid transparent;
+            background: var(--white); border-radius: var(--radius);
+            border: 1px solid var(--border); transition: all .3s;
         }
-
-        .pub-item:hover {
-            border-left-color: var(--accent);
-            box-shadow: var(--shadow-md);
-        }
-
-        .pub-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.5rem; }
-        .pub-authors { color: var(--text-secondary); font-size: 0.9rem; }
-        .pub-venue { color: var(--accent); font-weight: 600; margin: 0.5rem 0; }
-        .pub-year { color: var(--text-secondary); font-size: 0.85rem; }
+        .section-alt .pub-item { background: var(--bg); }
+        .pub-item:hover { border-left-color: var(--accent); box-shadow: var(--shadow-md); }
+        .pub-title { font-weight: 700; font-size: 1rem; margin-bottom: 6px; color: var(--text); }
+        .pub-authors { color: var(--text-muted); font-size: .85rem; }
+        .pub-venue { color: var(--primary-light); font-weight: 600; margin: 6px 0 2px; font-size: .88rem; }
+        .pub-year { color: var(--text-muted); font-size: .82rem; }
 
         /* Projects */
+        .project-sub { font-size: 1.15rem; color: var(--primary); margin: 32px 0 16px; font-weight: 700; }
         .project-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 6px;
-            border-left: 4px solid var(--primary);
-            margin-bottom: 1rem;
+            padding: 18px 24px; background: var(--white); border-radius: var(--radius);
+            border-left: 4px solid var(--primary-light);
+            border: 1px solid var(--border); border-left-width: 4px; margin-bottom: 12px;
         }
-
-        .project-title { font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
-        .project-details { color: var(--text-secondary); font-size: 0.9rem; }
+        .section-alt .project-item { background: var(--bg); }
+        .project-title { font-weight: 700; color: var(--primary); margin-bottom: 4px; font-size: .95rem; }
+        .project-details { color: var(--text-muted); font-size: .85rem; }
 
         /* Contact */
-        .contact-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-
-        .contact-item {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .contact-card { padding: 24px; }
+        .contact-card h3 { margin-bottom: 16px; }
+        .contact-row { display: flex; gap: 12px; align-items: flex-start; }
         .contact-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--bg-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 1.1rem;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--bg); display: flex; align-items: center;
+            justify-content: center; flex-shrink: 0; font-size: 1rem;
         }
+        .contact-label { font-size: .72rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 2px; }
+        .contact-row p { font-size: .9rem; }
 
         /* Footer */
         .footer {
-            background: var(--primary);
-            color: rgba(255,255,255,0.7);
-            text-align: center;
-            padding: 2rem;
+            background: var(--primary); color: rgba(255,255,255,.65);
+            text-align: center; padding: 40px 24px 32px;
+        }
+        .footer a { color: rgba(255,255,255,.85); }
+        .footer-inner { max-width: 1200px; margin: 0 auto; }
+        .footer p { font-size: .85rem; }
+        .footer-links { margin-top: 12px; }
+        .footer-links a { margin: 0 8px; font-size: .85rem; }
+        .footer-visitor {
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px; margin-top: 20px; padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,.12);
+            font-size: .8rem; color: rgba(255,255,255,.5);
         }
 
-        .footer a { color: rgba(255,255,255,0.9); }
-
-        /* Visitor Counter in Footer */
-        .visitor-counter {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            margin-top: 1.2rem;
-            padding-top: 1.2rem;
-            border-top: 1px solid rgba(255,255,255,0.15);
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
+        /* Back to top */
+        .back-top {
+            position: fixed; bottom: 28px; right: 28px;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: var(--primary-light); color: var(--white);
+            border: none; cursor: pointer; box-shadow: var(--shadow-md);
+            transition: all .3s; display: none; align-items: center;
+            justify-content: center; z-index: 999; font-size: 1.1rem;
         }
+        .back-top.show { display: flex; }
+        .back-top:hover { background: var(--accent); transform: translateY(-2px); }
 
-        .visitor-counter .counter-icon {
-            font-size: 1rem;
-        }
-
-        .visitor-counter .counter-badge {
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .visitor-counter .counter-badge img {
-            height: 22px;
-            vertical-align: middle;
-            border-radius: 3px;
-        }
-
-        /* Back to Top */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-        }
-
-        .back-to-top.show { display: flex; }
-        .back-to-top:hover { background: var(--accent); transform: translateY(-3px); }
-
-        /* Responsive */
+        /* Mobile */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .nav-inner { height: 70px; }
-            .logo-img { height: 42px; width: 42px; }
-            .logo-text .logo-main { font-size: 0.9rem; }
-            .logo-text .logo-sub { font-size: 0.65rem; }
-            .hero { margin-top: 70px; }
-            .hero h1 { font-size: 2rem; }
-            .hero-news-slide { padding: 1.5rem; gap: 1rem; flex-direction: column; }
-            .hero-news-date { min-width: 100%; }
-            .section { padding: 3rem 1.5rem; }
-            .pi-profile { grid-template-columns: 1fr; }
-            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .nav-links {
+                position: fixed; top: 72px; left: 0; width: 100%;
+                background: rgba(255,255,255,.98); flex-direction: column;
+                padding: 16px 24px; gap: 4px;
+                transform: translateY(-100%); opacity: 0;
+                transition: all .35s; pointer-events: none;
+                border-bottom: 1px solid var(--border);
+            }
+            .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+            .nav-links a { padding: 12px 0; font-size: 1rem; }
+            .nav-toggle { display: flex; }
+            .hero h1 { font-size: 1.9rem; }
+            .hero { padding: 60px 20px 40px; }
+            .hero-news-item { flex-direction: column; padding: 20px; }
+            .hero-news-date { min-width: 100%; display: flex; gap: 8px; align-items: center; padding: 10px 16px; }
+            .hero-news-date .d { font-size: 1.2rem; }
+            .section { padding: 56px 20px; }
+            .section-title { font-size: 1.5rem; }
+            .profile { grid-template-columns: 1fr; }
+            .profile-img { max-width: 260px; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-inner">
-            <div class="logo">
-                <img src="images/isscas-logo.png" alt="ISSCAS Logo" class="logo-img" onerror="this.style.display='none'">
-                <div class="logo-text">
-                    <span class="logo-main">Soil Microbiome <span style="color: var(--accent);">Ecology Lab</span></span>
-                    <span class="logo-sub">Institute of Soil Science, CAS</span>
-                </div>
-            </div>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#research">Research</a>
-                <a href="#team">People</a>
-                <a href="#publications">Publications</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero -->
-    <section class="hero">
+<!-- Nav -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">
+            <img src="images/isscas-logo.png" alt="ISSCAS" onerror="this.style.display='none'">
+            <div>
+                <div>Soil Microbiome <span style="color:var(--accent);">Ecology Lab</span></div>
+                <div class="nav-logo-sub">Institute of Soil Science, CAS</div>
+            </div>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#team">People</a>
+            <a href="#publications">Publications</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
         <h1>Soil Microbiome Ecology Research Group</h1>
-        <p class="subtitle">Exploring the Secrets of Soil Life</p>
-        <div class="hero-buttons">
+        <p class="sub">Exploring the Secrets of Soil Life</p>
+        <div class="hero-actions">
             <button class="btn btn-outline" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Join Us</button>
         </div>
-
-        <!-- News Carousel in Hero -->
-        <div class="hero-news-container">
-            <div class="hero-news-carousel" id="heroNewsCarousel">
-                <div class="hero-news-slide">
+        <div class="hero-news">
+            <div class="hero-news-inner" id="newsCarousel">
+                <div class="hero-news-item">
                     <div class="hero-news-date">
-                        <div class="day">29</div>
-                        <div class="month">Apr</div>
+                        <div class="d">29</div>
+                        <div class="m">Apr</div>
                     </div>
-                    <div class="hero-news-content">
+                    <div class="hero-news-body">
                         <h4>New Publication in Soil Ecology Letters</h4>
                         <p>Our latest review on soil microbial biogeography has been published.</p>
                     </div>
                 </div>
             </div>
-            <div class="hero-carousel-controls">
-                <button class="hero-carousel-btn" onclick="scrollHeroCarousel(-1)">❮</button>
-                <button class="hero-carousel-btn" onclick="scrollHeroCarousel(1)">❯</button>
+            <div class="hero-news-ctrl">
+                <button onclick="scrollNews(-1)">←</button>
+                <button onclick="scrollNews(1)">→</button>
             </div>
         </div>
-    </section>
-
-    <!-- About -->
-    <div class="section-wrapper bg-white">
-        <section id="about" class="section">
-            <h2 class="section-title">About us</h2>
-            <div class="pi-profile">
-                <div class="pi-avatar">
-                    <img src="images/gao.jpg" alt="Dr. Gui-Feng Gao" onerror="this.style.display='none'">
-                    <span style="display:none;">高</span>
-                </div>
-                <div class="pi-info">
-                    <h3>Dr. Gui-Feng Gao (高贵锋)</h3>
-                    <div class="pi-title">Associate Research Fellow</div>
-                    <div class="pi-bio">
-                        Dr. Gui-Feng Gao received his Ph.D. in Ecology from Xiamen University in 2018. He completed his postdoctoral training at the Institute of Soil Science, Chinese Academy of Sciences. His research focuses on soil microbiome ecology, microbial community assembly, and ecosystem functioning.
-                    </div>
-                    <div class="pi-stat">
-                        <div class="pi-stat-label">Field:</div>
-                        <div class="pi-stat-value">Microbial Ecology</div>
-                    </div>
-                    <div class="pi-stat">
-                        <div class="pi-stat-label">Education:</div>
-                        <div class="pi-stat-value">Ph.D. in Ecology (Xiamen University, 2018)</div>
-                    </div>
-                    <div class="pi-stat">
-                        <div class="pi-stat-label">Position:</div>
-                        <div class="pi-stat-value">Associate Research Fellow, Institute of Soil Science, CAS</div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
+</section>
 
-    <!-- Research Focus -->
-    <div class="section-wrapper bg-light">
-        <section id="research" class="section">
-            <h2 class="section-title">Research Directions</h2>
-            <div class="research-areas">
-                <ol>
-                    <li><strong>Soil Microbiome Biogeography & Driving Mechanisms</strong> - Understanding spatial patterns and environmental controls on microbial communities</li>
-                    <li><strong>Soil Microbial Community Structure and Functional Evolution</strong> - Linking microbial composition to ecosystem functions and services</li>
-                </ol>
+<!-- About -->
+<section class="section section-alt" id="about">
+    <div class="section-inner fade-in">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Principal Investigator</h2>
+        <div class="profile">
+            <div class="profile-img">
+                <img src="images/gao.jpg" alt="Dr. Gui-Feng Gao" onerror="this.style.display='none'">
             </div>
-        </section>
+            <div>
+                <h3>Dr. Gui-Feng Gao <span style="color:var(--text-muted);font-weight:400;font-size:.9rem;">(高贵锋)</span></h3>
+                <div class="profile-role">Associate Research Fellow</div>
+                <div class="profile-bio">
+                    Dr. Gui-Feng Gao received his Ph.D. in Ecology from Xiamen University in 2018. He completed his postdoctoral training at the Institute of Soil Science, Chinese Academy of Sciences. His research focuses on soil microbiome ecology, microbial community assembly, and ecosystem functioning.
+                </div>
+                <div class="profile-meta">
+                    <div class="profile-meta-row"><span class="profile-meta-label">Field</span><span class="profile-meta-val">Microbial Ecology</span></div>
+                    <div class="profile-meta-row"><span class="profile-meta-label">Education</span><span class="profile-meta-val">Ph.D. in Ecology (Xiamen University, 2018)</span></div>
+                    <div class="profile-meta-row"><span class="profile-meta-label">Position</span><span class="profile-meta-val">Associate Research Fellow, Institute of Soil Science, CAS</span></div>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
 
-    <!-- Team -->
-    <div class="section-wrapper bg-white">
-        <section id="team" class="section">
-            <h2 class="section-title">Research Team</h2>
-            <div class="grid grid-3">
-                <div class="card member-card">
-                    <div class="avatar" style="background: linear-gradient(135deg, #8b6f47, #b89968);">
-                        <img src="images/xin.jpg" alt="Master Student Xin" onerror="this.style.display='none'">
-                        <span style="display:none;">Xin</span>
-                    </div>
-                    <h4>Master Student</h4>
-                    <p class="member-role">Research Focus: Microbial Diversity in Coastal Wetlands</p>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">Microbial diversity analysis and community composition</p>
-                </div>
-                <div class="card member-card">
-                    <div class="avatar" style="background: linear-gradient(135deg, #5a8c4f, #7aac6f);">
-                        <img src="images/su.jpg" alt="Master Student Su" onerror="this.style.display='none'">
-                        <span style="display:none;">Su</span>
-                    </div>
-                    <h4>Master Student</h4>
-                    <p class="member-role">Research Focus: Pathogen Biogeography</p>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">Microbial distribution and environmental responses</p>
-                </div>
+<!-- Research -->
+<section class="section" id="research">
+    <div class="section-inner fade-in">
+        <div class="section-label">Research</div>
+        <h2 class="section-title">Research Directions</h2>
+        <div class="research-list">
+            <div class="research-item">
+                <strong>Soil Microbiome Biogeography & Driving Mechanisms</strong>
+                <p>Understanding spatial patterns and environmental controls on microbial communities</p>
             </div>
-        </section>
+            <div class="research-item">
+                <strong>Soil Microbial Community Structure and Functional Evolution</strong>
+                <p>Linking microbial composition to ecosystem functions and services</p>
+            </div>
+        </div>
     </div>
+</section>
 
-    <!-- Key Publications -->
-    <div class="section-wrapper bg-light">
-        <section id="publications" class="section">
-            <h2 class="section-title">Representative Publications</h2>
-            <p class="section-desc">Selected research accomplishments in peer-reviewed journals</p>
-            <div class="grid">
-                <div class="card pub-item">
-                    <div class="pub-title">Soil microbial biogeography: from maps to blueprints</div>
-                    <div class="pub-authors">Gui-Feng Gao‡, Shuo Jiao‡, Ke Dong‡, Xu Liu, Xin Xin, Beibei Chen, Kunkun Fan, Yu Shi, Congcong Shen, Teng Yang, Minyu Jing, Siyu Chen, Bin Ma, Gehong Wei, Jianming Xu, Jack A. Gilbert, Haiyan Chu*</div>
-                    <div class="pub-venue">Soil Ecology Letters</div>
-                    <div class="pub-year">2026, 8(4): 260423</div>
+<!-- Team -->
+<section class="section section-alt" id="team">
+    <div class="section-inner fade-in">
+        <div class="section-label">People</div>
+        <h2 class="section-title">Research Team</h2>
+        <div class="grid grid-3">
+            <div class="card team-card">
+                <div class="team-avatar" style="background:linear-gradient(135deg,#8b6f47,#b89968);">
+                    <img src="images/xin.jpg" alt="Xin" onerror="this.style.display='none'">
                 </div>
-                <div class="card pub-item">
-                    <div class="pub-title">Expedited loss of soil biodiversity in blue carbon ecosystems caused by rising sea levels</div>
-                    <div class="pub-authors">Gui-Feng Gao, Luyao Song, Yihui Zhang, Haiyan Chu*</div>
-                    <div class="pub-venue">Soil Biology and Biochemistry</div>
-                    <div class="pub-year">2024, 191: 109348</div>
-                </div>
-                <div class="card pub-item">
-                    <div class="pub-title">Continental-scale plant invasions reshuffle the soil microbiome of blue carbon ecosystems</div>
-                    <div class="pub-authors">Gui-Feng Gao, Huan Li, Yu Shi, Teng Yang, Chang-Hao Gao, and others</div>
-                    <div class="pub-venue">Global Change Biology</div>
-                    <div class="pub-year">2022, 28: 4423-4438</div>
-                </div>
-                <div class="card pub-item">
-                    <div class="pub-title">Increasing inundation frequencies enhance the stochastic process and network complexity of the soil archaeal community in coastal wetlands</div>
-                    <div class="pub-authors">Gui-Feng Gao, Dan Peng, Di Wu, Yihui Zhang, Haiyan Chu*</div>
-                    <div class="pub-venue">Applied and Environmental Microbiology</div>
-                    <div class="pub-year">2021, 87: e02560-20</div>
-                </div>
-                <div class="card pub-item">
-                    <div class="pub-title">Dramatic change of bacterial assembly process and co-occurrence pattern in Spartina alterniflora salt marsh along an inundation frequency gradient</div>
-                    <div class="pub-authors">Gui-Feng Gao, Dan Peng, Yihui Zhang, Yuntao Li, Kunkun Fan, and others</div>
-                    <div class="pub-venue">Science of the Total Environment</div>
-                    <div class="pub-year">2021, 755: 142546</div>
-                </div>
-                <div class="card pub-item">
-                    <div class="pub-title">Distinct community assembly processes of abundant and rare soil bacteria in coastal wetlands along an inundation gradient</div>
-                    <div class="pub-authors">Gui-Feng Gao, Dan Peng, Binu M. Tripathi, Yihui Zhang*, Haiyan Chu*</div>
-                    <div class="pub-venue">mSystems</div>
-                    <div class="pub-year">2020, 5: e01150-20</div>
-                </div>
-                <div class="card pub-item">
-                    <div class="pub-title">Soil microbial biogeography in a changing world: Recent advances and future perspectives</div>
-                    <div class="pub-authors">Haiyan Chu*, Gui-Feng Gao, Yuying Ma, Kunkun Fan, Manuel Delgado-Baquerizo*</div>
-                    <div class="pub-venue">mSystems</div>
-                    <div class="pub-year">2020, 5: e00803-19</div>
-                </div>
+                <h4>Master Student</h4>
+                <div class="team-role">Research Focus: Microbial Diversity in Coastal Wetlands</div>
+                <p class="team-focus">Microbial diversity analysis and community composition</p>
             </div>
-        </section>
+            <div class="card team-card">
+                <div class="team-avatar" style="background:linear-gradient(135deg,#5a8c4f,#7aac6f);">
+                    <img src="images/su.jpg" alt="Su" onerror="this.style.display='none'">
+                </div>
+                <h4>Master Student</h4>
+                <div class="team-role">Research Focus: Pathogen Biogeography</div>
+                <p class="team-focus">Microbial distribution and environmental responses</p>
+            </div>
+        </div>
     </div>
+</section>
 
-    <!-- Research Projects -->
-    <div class="section-wrapper bg-white">
-        <section id="projects" class="section">
-            <h2 class="section-title">Research Projects</h2>
-            <p class="section-desc">Current and completed funded research projects</p>
-
-            <h3 style="color: var(--primary); margin: 2rem 0 1rem 0; font-size: 1.3rem;">Principal Investigator</h3>
-            <div class="project-item">
-                <div class="project-title">National Key Research & Development Program</div>
-                <div class="project-details"><strong>Title:</strong> Biocontrol of Soil-Borne Diseases and Remediation Technology for Herbicide Degradation in Dryland Soils | <strong>Period:</strong> 2024-2027</div>
+<!-- Publications -->
+<section class="section" id="publications">
+    <div class="section-inner fade-in">
+        <div class="section-label">Publications</div>
+        <h2 class="section-title">Representative Publications</h2>
+        <p class="section-desc">Selected research accomplishments in peer-reviewed journals</p>
+        <div class="grid grid-1">
+            <div class="pub-item">
+                <div class="pub-title">Soil microbial biogeography: from maps to blueprints</div>
+                <div class="pub-authors">Gui-Feng Gao‡, Shuo Jiao‡, Ke Dong‡, Xu Liu, Xin Xin, Beibei Chen, Kunkun Fan, Yu Shi, Congcong Shen, Teng Yang, Minyu Jing, Siyu Chen, Bin Ma, Gehong Wei, Jianming Xu, Jack A. Gilbert, Haiyan Chu*</div>
+                <div class="pub-venue">Soil Ecology Letters</div>
+                <div class="pub-year">2026, 8(4): 260423</div>
             </div>
-            <div class="project-item">
-                <div class="project-title">National Natural Science Foundation of China - General Program</div>
-                <div class="project-details"><strong>Title:</strong> Spatiotemporal distribution of soil carbon-fixing microbes and their carbon enhancement mechanism in China's coastal wetlands under Spartina alterniflora invasion | <strong>Period:</strong> 2025-2028</div>
+            <div class="pub-item">
+                <div class="pub-title">Expedited loss of soil biodiversity in blue carbon ecosystems caused by rising sea levels</div>
+                <div class="pub-authors">Gui-Feng Gao, Luyao Song, Yihui Zhang, Haiyan Chu*</div>
+                <div class="pub-venue">Soil Biology and Biochemistry</div>
+                <div class="pub-year">2024, 191: 109348</div>
             </div>
-            <div class="project-item">
-                <div class="project-title">National Natural Science Foundation of China - Young Scientist Program</div>
-                <div class="project-details"><strong>Title:</strong> Response mechanism of soil microbial communities to sea level rise in typical coastal wetlands in southern China | <strong>Period:</strong> 2020-2022</div>
+            <div class="pub-item">
+                <div class="pub-title">Continental-scale plant invasions reshuffle the soil microbiome of blue carbon ecosystems</div>
+                <div class="pub-authors">Gui-Feng Gao, Huan Li, Yu Shi, Teng Yang, Chang-Hao Gao, and others</div>
+                <div class="pub-venue">Global Change Biology</div>
+                <div class="pub-year">2022, 28: 4423-4438</div>
             </div>
-            <div class="project-item">
-                <div class="project-title">Jiangsu Province Postdoctoral Fellowship</div>
-                <div class="project-details"><strong>Title:</strong> Distribution and Driving Mechanisms of Soil Microbial Communities Under Spartina alterniflora Invasion | <strong>Period:</strong> 2019-2020</div>
+            <div class="pub-item">
+                <div class="pub-title">Increasing inundation frequencies enhance the stochastic process and network complexity of the soil archaeal community in coastal wetlands</div>
+                <div class="pub-authors">Gui-Feng Gao, Dan Peng, Di Wu, Yihui Zhang, Haiyan Chu*</div>
+                <div class="pub-venue">Applied and Environmental Microbiology</div>
+                <div class="pub-year">2021, 87: e02560-20</div>
             </div>
-
-            <h3 style="color: var(--primary); margin: 2rem 0 1rem 0; font-size: 1.3rem;">Co-Investigator</h3>
-            <div class="project-item">
-                <div class="project-title">National Key Research & Development Program</div>
-                <div class="project-details"><strong>Title:</strong> Microbiological Regulation and Yield Enhancement of Active Organic Matter in Dryland Soil | <strong>Period:</strong> 2022-2026</div>
+            <div class="pub-item">
+                <div class="pub-title">Dramatic change of bacterial assembly process and co-occurrence pattern in Spartina alterniflora salt marsh along an inundation frequency gradient</div>
+                <div class="pub-authors">Gui-Feng Gao, Dan Peng, Yihui Zhang, Yuntao Li, Kunkun Fan, and others</div>
+                <div class="pub-venue">Science of the Total Environment</div>
+                <div class="pub-year">2021, 755: 142546</div>
             </div>
-            <div class="project-item">
-                <div class="project-title">Chinese Academy of Sciences Strategic Priority Program Sub-project</div>
-                <div class="project-details"><strong>Title:</strong> Targeted Cultivation of Key Species for Soil Biological Network Health | <strong>Period:</strong> 2021-2026</div>
+            <div class="pub-item">
+                <div class="pub-title">Distinct community assembly processes of abundant and rare soil bacteria in coastal wetlands along an inundation gradient</div>
+                <div class="pub-authors">Gui-Feng Gao, Dan Peng, Binu M. Tripathi, Yihui Zhang*, Haiyan Chu*</div>
+                <div class="pub-venue">mSystems</div>
+                <div class="pub-year">2020, 5: e01150-20</div>
             </div>
-            <div class="project-item">
-                <div class="project-title">National Agricultural Major Science & Technology Project Sub-task</div>
-                <div class="project-details"><strong>Title:</strong> Evaluation and Diagnosis of Soil Biological Health in Black Soil | <strong>Period:</strong> 2022-2026</div>
+            <div class="pub-item">
+                <div class="pub-title">Soil microbial biogeography in a changing world: Recent advances and future perspectives</div>
+                <div class="pub-authors">Haiyan Chu*, Gui-Feng Gao, Yuying Ma, Kunkun Fan, Manuel Delgado-Baquerizo*</div>
+                <div class="pub-venue">mSystems</div>
+                <div class="pub-year">2020, 5: e00803-19</div>
             </div>
-            <div class="project-item">
-                <div class="project-title">National Natural Science Foundation - Key Program</div>
-                <div class="project-details"><strong>Title:</strong> Evolution and Conservation of Microbial Diversity in Typical Qinghai-Tibet Plateau Wetlands Under Climate Change | <strong>Period:</strong> 2019-2024</div>
-            </div>
-            <div class="project-item">
-                <div class="project-title">National Natural Science Foundation - Major Research Plan</div>
-                <div class="project-details"><strong>Title:</strong> Distribution and Function of Methane-oxidizing Microorganisms in Qinghai-Tibet Plateau Wetlands | <strong>Period:</strong> 2020-2022</div>
-            </div>
-        </section>
+        </div>
     </div>
+</section>
 
-    <!-- Contact -->
-    <div class="section-wrapper bg-light">
-        <section id="contact" class="section">
-            <h2 class="section-title">Contact Us</h2>
-            <p class="section-desc">We welcome inquiries and collaboration opportunities</p>
-            <div class="grid contact-grid">
-                <div class="card">
-                    <h3>Email</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon">✉</div>
-                        <div>
-                            <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Primary Email</p>
-                            <p><a href="mailto:gfgao@issas.ac.cn">gfgao@issas.ac.cn</a></p>
-                        </div>
+<!-- Projects -->
+<section class="section section-alt" id="projects">
+    <div class="section-inner fade-in">
+        <div class="section-label">Projects</div>
+        <h2 class="section-title">Research Projects</h2>
+        <p class="section-desc">Current and completed funded research projects</p>
+
+        <div class="project-sub">Principal Investigator</div>
+        <div class="project-item">
+            <div class="project-title">National Key Research & Development Program</div>
+            <div class="project-details"><strong>Title:</strong> Biocontrol of Soil-Borne Diseases and Remediation Technology for Herbicide Degradation in Dryland Soils | <strong>Period:</strong> 2024-2027</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">NSFC General Program</div>
+            <div class="project-details"><strong>Title:</strong> Spatiotemporal distribution of soil carbon-fixing microbes and their carbon enhancement mechanism in China's coastal wetlands under Spartina alterniflora invasion | <strong>Period:</strong> 2025-2028</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">NSFC Young Scientist Program</div>
+            <div class="project-details"><strong>Title:</strong> Response mechanism of soil microbial communities to sea level rise in typical coastal wetlands in southern China | <strong>Period:</strong> 2020-2022</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">Jiangsu Province Postdoctoral Fellowship</div>
+            <div class="project-details"><strong>Title:</strong> Distribution and Driving Mechanisms of Soil Microbial Communities Under Spartina alterniflora Invasion | <strong>Period:</strong> 2019-2020</div>
+        </div>
+
+        <div class="project-sub">Co-Investigator</div>
+        <div class="project-item">
+            <div class="project-title">National Key Research & Development Program</div>
+            <div class="project-details"><strong>Title:</strong> Microbiological Regulation and Yield Enhancement of Active Organic Matter in Dryland Soil | <strong>Period:</strong> 2022-2026</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">CAS Strategic Priority Program Sub-project</div>
+            <div class="project-details"><strong>Title:</strong> Targeted Cultivation of Key Species for Soil Biological Network Health | <strong>Period:</strong> 2021-2026</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">National Agricultural Major Science & Technology Sub-task</div>
+            <div class="project-details"><strong>Title:</strong> Evaluation and Diagnosis of Soil Biological Health in Black Soil | <strong>Period:</strong> 2022-2026</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">NSFC Key Program</div>
+            <div class="project-details"><strong>Title:</strong> Evolution and Conservation of Microbial Diversity in Typical Qinghai-Tibet Plateau Wetlands Under Climate Change | <strong>Period:</strong> 2019-2024</div>
+        </div>
+        <div class="project-item">
+            <div class="project-title">NSFC Major Research Plan</div>
+            <div class="project-details"><strong>Title:</strong> Distribution and Function of Methane-oxidizing Microorganisms in Qinghai-Tibet Plateau Wetlands | <strong>Period:</strong> 2020-2022</div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+    <div class="section-inner fade-in">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-desc">We welcome inquiries and collaboration opportunities</p>
+        <div class="contact-grid">
+            <div class="card contact-card">
+                <h3>Email</h3>
+                <div class="contact-row">
+                    <div class="contact-icon">✉</div>
+                    <div>
+                        <div class="contact-label">Primary Email</div>
+                        <p><a href="mailto:gfgao@issas.ac.cn">gfgao@issas.ac.cn</a></p>
                     </div>
                 </div>
-                <div class="card">
-                    <h3>Phone</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div>
-                            <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Office Phone</p>
-                            <p><a href="tel:025-86881345">025-86881345</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>Location</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <p style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Address</p>
-                            <p><a href="https://uri.amap.com/search?keyword=南京市江宁区创优路298号" target="_blank" rel="noopener noreferrer" style="color: var(--primary); border-bottom: 1px dashed var(--accent);">No.298 Chuangyou Road, Jiangning District, Nanjing, China</a></p>
-                        </div>
+            </div>
+            <div class="card contact-card">
+                <h3>Phone</h3>
+                <div class="contact-row">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <div class="contact-label">Office Phone</div>
+                        <p><a href="tel:025-86881345">025-86881345</a></p>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="card contact-card">
+                <h3>Location</h3>
+                <div class="contact-row">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <div class="contact-label">Address</div>
+                        <p><a href="https://uri.amap.com/search?keyword=南京市江宁区创优路298号" target="_blank" rel="noopener noreferrer" style="border-bottom:1px dashed var(--accent);">No.298 Chuangyou Road, Jiangning District, Nanjing, China</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer">
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-inner">
         <p>&copy; 2026 Soil Microbiome Ecology Research Group | Nanjing Institute of Soil Science, Chinese Academy of Sciences</p>
-        <p style="margin-top: 1rem; font-size: 0.9rem;"><a href="#">Privacy Policy</a> | <a href="#">Contact Information</a></p>
-        <div class="visitor-counter">
-            <span class="counter-icon">👥</span>
+        <div class="footer-links"><a href="#">Privacy Policy</a> | <a href="#">Contact Information</a></div>
+        <div class="footer-visitor">
+            <span>👥</span>
             <span>Total Visitors:</span>
-            <span class="counter-badge">
-                <img src="https://api.visitorbadge.io/api/visitors?path=soil-microbiome-ecology-lab&label=&labelColor=%232d5016&countColor=%238b6f47&style=flat&labelStyle=none" alt="visitor count" id="visitorBadge">
-            </span>
+            <span><img src="https://api.visitorbadge.io/api/visitors?path=soil-microbiome-ecology-lab&label=&labelColor=%231a3c34&countColor=%23c4a35a&style=flat&labelStyle=none" alt="visitor count" style="height:20px;vertical-align:middle;border-radius:3px;" id="visitorBadge"></span>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" id="backTop">↑</button>
 
-    <script>
-        // Smooth scroll for nav links
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                e.preventDefault();
-                const target = document.querySelector(a.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
+<script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-        // Back to top button
-        window.addEventListener('scroll', () => {
-            document.querySelector('.back-to-top').classList.toggle('show', window.scrollY > 300);
-        });
+    // Back to top
+    window.addEventListener('scroll', () => {
+        document.getElementById('backTop').classList.toggle('show', window.scrollY > 300);
+    });
 
-        // Show fallback text if image fails to load
-        document.querySelectorAll('.avatar img').forEach(img => {
-            img.addEventListener('error', () => {
-                const span = img.parentElement.querySelector('span');
-                if (span) span.style.display = 'block';
-            });
-        });
+    // Hero news carousel
+    function scrollNews(dir) {
+        const c = document.getElementById('newsCarousel');
+        const w = c.querySelector('.hero-news-item').offsetWidth;
+        c.scrollBy({ left: dir * w, behavior: 'smooth' });
+    }
+    setInterval(() => {
+        const c = document.getElementById('newsCarousel');
+        const m = c.scrollWidth - c.clientWidth;
+        if (c.scrollLeft >= m - 10) { c.scrollTo({ left: 0, behavior: 'smooth' }); }
+        else { scrollNews(1); }
+    }, 5000);
 
-        // Handle PI avatar image load/error
-        const piAvatar = document.querySelector('.pi-avatar img');
-        if (piAvatar) {
-            piAvatar.addEventListener('error', () => {
-                const span = piAvatar.parentElement.querySelector('span');
-                if (span) span.style.display = 'block';
-            });
-        }
+    // Visitor badge fallback
+    document.getElementById('visitorBadge').addEventListener('error', function() {
+        const K = 'site_visitor_count', V = 'has_visited';
+        let c = parseInt(localStorage.getItem(K)) || 0;
+        if (!sessionStorage.getItem(V)) { c++; localStorage.setItem(K, c); sessionStorage.setItem(V, 'true'); }
+        this.parentElement.innerHTML = '<span style="background:rgba(255,255,255,0.12);padding:2px 10px;border-radius:50px;font-weight:600;color:rgba(255,255,255,0.85);letter-spacing:1px;">' + c.toLocaleString() + '</span>';
+    });
 
-        // Hero Carousel functionality
-        function scrollHeroCarousel(direction) {
-            const carousel = document.getElementById('heroNewsCarousel');
-            const slideWidth = carousel.querySelector('.hero-news-slide').offsetWidth;
-            carousel.scrollBy({
-                left: direction * slideWidth,
-                behavior: 'smooth'
-            });
-        }
-
-        // Auto-scroll hero carousel
-        setInterval(() => {
-            const carousel = document.getElementById('heroNewsCarousel');
-            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-            if (carousel.scrollLeft >= maxScroll - 10) {
-                carousel.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                scrollHeroCarousel(1);
-            }
-        }, 5000);
-
-        // Visitor badge fallback - if image service fails, show local count
-        document.getElementById('visitorBadge').addEventListener('error', function() {
-            const STORAGE_KEY = 'site_visitor_count';
-            const VISITED_KEY = 'has_visited';
-            let count = parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
-            if (!sessionStorage.getItem(VISITED_KEY)) {
-                count++;
-                localStorage.setItem(STORAGE_KEY, count);
-                sessionStorage.setItem(VISITED_KEY, 'true');
-            }
-            this.parentElement.innerHTML = '<span style="background:rgba(255,255,255,0.15);padding:0.2rem 0.8rem;border-radius:50px;font-weight:600;color:rgba(255,255,255,0.9);letter-spacing:1px;">' + count.toLocaleString() + '</span>';
-        });
-    </script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
